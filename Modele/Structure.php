@@ -28,14 +28,6 @@ abstract class Structure
      * @var bool
      */
     private $estAsso;
-    /**
-     * @var int
-     */
-    private $nombreDonateurs;
-    /**
-     * @var int
-     */
-    private $nombreActionnaires;
 
     /**
      * Structure constructor.
@@ -45,10 +37,8 @@ abstract class Structure
      * @param String $code_postal
      * @param String $ville
      * @param bool $estAsso
-     * @param int $nombreDonateurs
-     * @param int $nombreActionnaires
      */
-    public function __construct(String $nom, String $rue, String $code_postal, String $ville, bool $estAsso, int $nombreDonateurs, int $nombreActionnaires)
+    public function __construct(String $nom, String $rue, String $code_postal, String $ville, bool $estAsso)
     {
 
         $this->nom = $nom;
@@ -56,8 +46,6 @@ abstract class Structure
         $this->code_postal = $code_postal;
         $this->ville = $ville;
         $this->estAsso = $estAsso;
-        $this->nombreDonateurs = $nombreDonateurs;
-        $this->nombreActionnaires = $nombreActionnaires;
     }
 
     /**
@@ -155,39 +143,5 @@ abstract class Structure
     {
         $this->estAsso = $estAsso;
     }
-
-    /**
-     * @return int
-     */
-    public function getNombreDonateurs(): int
-    {
-        return $this->nombreDonateurs;
-    }
-
-    /**
-     * @param int $nombreDonateurs
-     */
-    public function setNombreDonateurs(int $nombreDonateurs): void
-    {
-        $this->nombreDonateurs = $nombreDonateurs;
-    }
-
-    /**
-     * @return int
-     */
-    public function getNombreActionnaires(): int
-    {
-        return $this->nombreActionnaires;
-    }
-
-    /**
-     * @param int $nombreActionnaires
-     */
-    public function setNombreActionnaires(int $nombreActionnaires): void
-    {
-        $this->nombreActionnaires = $nombreActionnaires;
-    }
-
-
 
 }
