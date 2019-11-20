@@ -17,6 +17,22 @@ class Entreprise extends Structure
     private $actionnaires;
 
     /**
+     * @return string
+     */
+    public function getActionnaires(): string
+    {
+        return $this->actionnaires;
+    }
+
+    /**
+     * @param string $actionnaires
+     */
+    public function setActionnaires(string $actionnaires): void
+    {
+        $this->actionnaires = $actionnaires;
+    }
+
+    /**
      * Entreprise constructor.
      * @param string $nom
      * @param string $rue
@@ -30,6 +46,7 @@ class Entreprise extends Structure
         parent::__construct($nom,$rue,$code_postal,$ville,$estAsso);
         $this->actionnaires = $actionnaires;
     }
+
 
 
 }
