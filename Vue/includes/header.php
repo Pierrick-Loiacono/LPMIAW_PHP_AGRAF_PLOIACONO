@@ -1,3 +1,11 @@
+<?php
+    include('connexion.php');
+    global $bdd;
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
