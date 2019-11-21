@@ -1,6 +1,8 @@
 <?php
 
 namespace POO\Entity;
+include ('../Vue/includes/connexion.php');
+
 class Secteur
 {
     /**
@@ -54,7 +56,12 @@ class Secteur
         $this->libelle = $libelle;
     }
 
+    public function getAllStructure($bdd){
+           $requete = $bdd->prepare('SELECT * FROM structure');
+           $requete->execute();
+            return $requete;
 
+        }
 
 
 }
