@@ -42,7 +42,7 @@ class Association extends Structure
         $this->donateurs = $donateurs;
     }
 
-    
+
 
 
 }
