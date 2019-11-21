@@ -59,9 +59,8 @@ class Secteur
     public function getAllStructure($bdd){
            $requete = $bdd->prepare('SELECT * FROM structure');
            $requete->execute();
-            return $requete;
-
-        }
+           return $requete;
+    }
 
 
 }
