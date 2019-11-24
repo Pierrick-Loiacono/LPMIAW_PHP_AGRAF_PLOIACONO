@@ -57,11 +57,6 @@ class Secteur
         $this->libelle = $libelle;
     }
 
-    public function getAllStructure($bdd){
-           $requete = $bdd->prepare('SELECT * FROM structure');
-           $requete->execute();
-           $req = $requete->fetchAll();
-           return $req;
-    }
+
 
 }

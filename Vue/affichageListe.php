@@ -3,38 +3,33 @@
     global $bdd;
 
     use POO\Entity\Secteur;
-    require_once('../Modele/Secteur.php');
 
 ?>
 
     <table class="table table-striped">
         <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">ID</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Code Postal</th>
+            <th scope="col">Ville</th>
         </tr>
         </thead>
         <tbody>
+        <?php
+        while ($data = $req->fetch()) {
+        ?>
         <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <th scope="row"><?php echo htmlspecialchars($data['ID'])?></th>
+            <td><?php echo htmlspecialchars($data['NOM'])?></td>
+            <td><?php echo htmlspecialchars($data['CP'])?></td>
+            <td><?php echo htmlspecialchars($data['VILLE'])?></td>
         </tr>
         <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-        </tr>
+        <?php
+        }
+        $req->closeCursor();
+        ?>
         </tbody>
     </table>
 

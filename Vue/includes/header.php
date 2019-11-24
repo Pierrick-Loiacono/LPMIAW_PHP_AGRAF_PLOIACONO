@@ -2,7 +2,6 @@
     include('connexion.php');
     global $bdd;
 
-
 ?>
 
 
@@ -12,7 +11,7 @@
     <meta charset="utf-8">
     <title>Structure</title>
 
-    <link href="../Public/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="Public/css/bootstrap.css">
 </head>
 
 <header>

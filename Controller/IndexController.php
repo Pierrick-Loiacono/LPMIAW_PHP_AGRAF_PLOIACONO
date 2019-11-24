@@ -12,8 +12,8 @@ global $bdd;
 class IndexController
 {
 
-    function index(){
-        $all = getAllStructure();
-    }
+//    function index(){
+//        $all = getAllStructure();
+//    }
 
 }
