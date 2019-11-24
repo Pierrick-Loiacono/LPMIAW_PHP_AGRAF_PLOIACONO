@@ -2,6 +2,7 @@
 
 namespace POO\Entity;
 include ('../Vue/includes/connexion.php');
+global $bdd;
 
 class Secteur
 {
@@ -59,8 +60,8 @@ class Secteur
     public function getAllStructure($bdd){
            $requete = $bdd->prepare('SELECT * FROM structure');
            $requete->execute();
-           return $requete;
+           $req = $requete->fetchAll();
+           return $req;
     }
-
 
 }

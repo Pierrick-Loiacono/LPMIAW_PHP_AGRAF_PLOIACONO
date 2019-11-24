@@ -1,5 +1,10 @@
 <?php
     include('includes/header.php');
+    global $bdd;
+
+    use POO\Entity\Secteur;
+    require_once('../Modele/Secteur.php');
+
 ?>
 
     <table class="table table-striped">
