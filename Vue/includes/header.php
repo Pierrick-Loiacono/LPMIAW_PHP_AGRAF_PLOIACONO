@@ -12,7 +12,7 @@
     <meta charset="utf-8">
     <title>Structure</title>
 
-    <link href="../../Public/css/bootstrap.css" rel="stylesheet">
+    <link href="../Public/css/bootstrap.css" rel="stylesheet">
 </head>
 
 <header>
