@@ -17,7 +17,7 @@
         </thead>
         <tbody>
         <?php
-        while ($data = $req->fetch()) {
+        while ($data = $structures->fetch()) {
         ?>
         <tr>
             <th scope="row"><?php echo htmlspecialchars($data['ID'])?></th>
@@ -28,7 +28,7 @@
         <tr>
         <?php
         }
-        $req->closeCursor();
+        $structures->closeCursor();
         ?>
         </tbody>
     </table>

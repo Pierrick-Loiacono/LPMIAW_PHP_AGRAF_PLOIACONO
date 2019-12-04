@@ -144,4 +144,10 @@ abstract class Structure
         $this->estAsso = $estAsso;
     }
 
+    public function getAllStructure(){
+        $requete = $bdd->query('SELECT * FROM structure');
+
+        return $requete;
+    }
+
 }

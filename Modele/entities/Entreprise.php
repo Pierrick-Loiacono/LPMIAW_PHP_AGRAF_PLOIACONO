@@ -3,7 +3,7 @@
 namespace POO\Entity;
 
 use POO\Entity\Structure;
-require_once ('Structure.php');
+require_once('Structure.php');
 
 /**
  * Class Entreprise

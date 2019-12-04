@@ -1,8 +1,6 @@
 <?php
 
 namespace POO\Entity;
-include ('../Vue/includes/connexion.php');
-global $bdd;
 
 class Secteur
 {
