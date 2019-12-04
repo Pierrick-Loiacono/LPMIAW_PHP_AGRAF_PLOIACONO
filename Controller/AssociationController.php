@@ -20,7 +20,7 @@ class AssociationController
 
     function viewListe(){
 
-        $structures = $this->manager->getAllAssociation($GLOBALS['bdd']);
+        $associationListe = $this->manager->getAllAssociation($GLOBALS['bdd']);
 
         require(__DIR__.'/../Vue/affichageListe.php');
 
