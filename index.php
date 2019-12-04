@@ -1,9 +1,10 @@
 <?php
 
 require_once('Modele/entities/Secteur.php');
-require_once('Controller/IndexController.php');
+require_once('Controller/AssociationController.php');
 
-use POO\Entity\IndexController;
+
+use POO\Entity\AssociationController;
 use POO\Entity\Secteur;
 
 
@@ -12,8 +13,9 @@ use POO\Entity\Secteur;
 // On récupérer la requete
 //$req = getAllStructure($bdd);
 
-$c = new IndexController();
+$c = new AssociationController();
 $c->viewListe();
+
 
 // On transmet tout a affichageListe.php et on affichage le contenu
 //require('Vue/affichageListe.php');
