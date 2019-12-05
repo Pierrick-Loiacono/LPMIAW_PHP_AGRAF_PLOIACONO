@@ -32,29 +32,29 @@ function form_entreprise(){
         <div id="div_id_name" class="form-group required">
             <label for="id_name" class="control-label col-md-4  requiredField">Nom<span class="asteriskField">*</span> </label>
             <div class="controls col-md-8 ">
-                <input class="input-md  textinput textInput form-control" id="id_name" maxlength="30" name="nom" placeholder="nom de l'entreprise" style="margin-bottom: 10px" type="text" />
+                <input class="input-md  textinput textInput form-control" id="id_name" required maxlength="30" name="nom" placeholder="nom de l'entreprise" style="margin-bottom: 10px" type="text" />
             </div>
         </div>
         <div id="div_id_rue" class="form-group required">
             <label for="id_rue" class="control-label col-md-4  requiredField">Rue<span class="asteriskField">*</span> </label>
             <div class="controls col-md-8 ">
-                <input class="input-md textinput textInput form-control" id="id_rue" name="rue" placeholder="Rue" style="margin-bottom: 10px" type="text" />
+                <input class="input-md textinput textInput form-control" id="id_rue" required name="rue" placeholder="Rue" style="margin-bottom: 10px" type="text" />
             </div>
         </div>
         <div id="div_id_postal" class="form-group required">
             <label for="id_postal" class="control-label col-md-4  requiredField"> Code Postal<span class="asteriskField">*</span> </label>
             <div class="controls col-md-8 ">
-                <input class="input-md textinput textInput form-control" id="id_postal" name="postal" placeholder="Code Postal" style="margin-bottom: 10px" type="text" />
+                <input class="input-md textinput textInput form-control" id="id_postal" required name="postal" placeholder="Code Postal" style="margin-bottom: 10px" type="text" />
             </div>
         </div>
         <div id="div_id_ville" class="form-group required">
             <label for="div_id_ville" class="control-label col-md-4  requiredField"> Ville<span class="asteriskField">*</span> </label>
             <div class="controls col-md-8 ">
-                <input class="input-md textinput textInput form-control" id="div_id_ville" name="ville" placeholder="ville" style="margin-bottom: 10px" type="text" />
+                <input class="input-md textinput textInput form-control" id="div_id_ville" required name="ville" placeholder="ville" style="margin-bottom: 10px" type="text" />
             </div>
         </div>
         <div id="div_id_actionnaire" class="form-group required">
-            <label for="div_id_actionnaire" class="control-label col-md-4  requiredField"> Actionnaire<span class="asteriskField">*</span> </label>
+            <label for="div_id_actionnaire" class="control-label col-md-4  requiredField"> Actionnaire</label>
             <div class="controls col-md-8 ">
                 <input class="input-md textinput textInput form-control" id="div_id_actionnaire" name="actionnaire" placeholder="Nombre d'actionnaire" style="margin-bottom: 10px" type="text" />
             </div>
@@ -76,29 +76,29 @@ function form_association() {
         <div id="div_id_name" class="form-group required">
             <label for="id_name" class="control-label col-md-4  requiredField">Nom<span class="asteriskField">*</span> </label>
             <div class="controls col-md-8 ">
-                <input class="input-md  textinput textInput form-control" id="id_name_asso" maxlength="30" name="nom_asso" placeholder="Nom de  l'association" style="margin-bottom: 10px" type="text" />
+                <input class="input-md  textinput textInput form-control" id="id_name_asso" maxlength="30" required name="nom_asso" placeholder="Nom de  l'association" style="margin-bottom: 10px" type="text" />
             </div>
         </div>
         <div id="div_id_rue" class="form-group required">
             <label for="id_rue" class="control-label col-md-4  requiredField">Rue<span class="asteriskField">*</span> </label>
             <div class="controls col-md-8 ">
-                <input class="input-md textinput textInput form-control" id="id_rue_asso" name="rue_asso" placeholder="Rue" style="margin-bottom: 10px" type="text" />
+                <input class="input-md textinput textInput form-control" id="id_rue_asso" required name="rue_asso" placeholder="Rue" style="margin-bottom: 10px" type="text" />
             </div>
         </div>
         <div id="div_id_postal" class="form-group required">
             <label for="id_postal" class="control-label col-md-4  requiredField"> Code Postal<span class="asteriskField">*</span> </label>
             <div class="controls col-md-8 ">
-                <input class="input-md textinput textInput form-control" id="id_postal_asso" name="postal_asso" placeholder="Code Postal" style="margin-bottom: 10px" type="text" />
+                <input class="input-md textinput textInput form-control" id="id_postal_asso" required name="postal_asso" placeholder="Code Postal" style="margin-bottom: 10px" type="text" />
             </div>
         </div>
         <div id="div_id_ville" class="form-group required">
             <label for="div_id_ville" class="control-label col-md-4  requiredField"> Ville<span class="asteriskField">*</span> </label>
             <div class="controls col-md-8 ">
-                <input class="input-md textinput textInput form-control" id="id_ville_asso" name="ville_asso" placeholder="ville" style="margin-bottom: 10px" type="text" />
+                <input class="input-md textinput textInput form-control" id="id_ville_asso" required name="ville_asso" placeholder="ville" style="margin-bottom: 10px" type="text" />
             </div>
         </div>
         <div id="div_id_actionnaire" class="form-group required">
-            <label for="div_id_actionnaire" class="control-label col-md-4  requiredField"> Donateur<span class="asteriskField">*</span> </label>
+            <label for="div_id_actionnaire" class="control-label col-md-4  requiredField"> Donateur</label>
             <div class="controls col-md-8 ">
                 <input class="input-md textinput textInput form-control" id="div_id_actionnaire" name="donateur" placeholder="Nombre d'actionnaire" style="margin-bottom: 10px" type="text" />
             </div>
@@ -119,7 +119,7 @@ function form_secteur() {
         <div id="div_id_name" class="form-group required">
             <label for="id_name" class="control-label col-md-4  requiredField">Nom<span class="asteriskField">*</span> </label>
             <div class="controls col-md-8 ">
-                <input class="input-md  textinput textInput form-control" id="id_name_secteur" maxlength="30" name="nom_asso" placeholder="Nom du secteur" style="margin-bottom: 10px" type="text" />
+                <input class="input-md  textinput textInput form-control" id="id_name_secteur" maxlength="30" required name="nom_asso" placeholder="Nom du secteur" style="margin-bottom: 10px" type="text" />
             </div>
         </div>
         <div class="form-group">

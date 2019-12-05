@@ -36,8 +36,8 @@ if(isset($_POST['enregistrer_entreprise'])) {
                         <div id="div_id_select" class="form-group required">
                             <label for="id_select"  class="control-label col-md-4  requiredField"> Select<span class="asteriskField"></span> </label>
                             <div class="controls col-md-8 "  style="margin-bottom: 10px">
-                                <label class="radio-inline"><input type="radio"  name="select" id="check_entreprise" value="S"  style="margin-bottom: 10px">Entreprise</label>
-                                <label class="radio-inline"> <input type="radio" checked="checked" name="select" id="check_association" value="P"  style="margin-bottom: 10px">Association </label>
+                                <label class="radio-inline"><input type="radio"  checked="checked" name="select" id="check_entreprise" value="S"  style="margin-bottom: 10px">Entreprise</label>
+                                <label class="radio-inline"> <input type="radio"  name="select" id="check_association" value="P"  style="margin-bottom: 10px">Association </label>
                                 <label class="radio-inline"> <input type="radio" name="select" id="check_secteur" value="P"  style="margin-bottom: 10px">Secteur </label>
                             </div>
                         </div>
