@@ -18,8 +18,9 @@ class Secteur
      * @param int $id
      * @param String $libelle
      */
-    public function __construct(String $libelle)
+    public function __construct(int $id, String $libelle)
     {
+        $this->id = $id;
         $this->libelle = $libelle;
     }
 

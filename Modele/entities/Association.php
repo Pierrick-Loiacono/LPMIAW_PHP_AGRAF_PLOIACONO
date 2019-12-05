@@ -20,9 +20,9 @@ class Association extends Structure
      * @param bool $estAsso
      * @param string $donateurs
      */
-    public function __construct(string $nom, string $rue, string $code_postal, string $ville, bool $estAsso, string $donateurs)
+    public function __construct(int $id,string $nom, string $rue, string $code_postal, string $ville, bool $estAsso, string $donateurs)
     {
-        parent::__construct($nom, $rue, $code_postal, $ville, $estAsso);
+        parent::__construct($id, $nom, $rue, $code_postal, $ville, $estAsso);
         $this->donateurs = $donateurs;
     }
 

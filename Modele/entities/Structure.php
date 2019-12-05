@@ -38,9 +38,9 @@ abstract class Structure
      * @param String $ville
      * @param bool $estAsso
      */
-    public function __construct(String $nom, String $rue, String $code_postal, String $ville, bool $estAsso)
+    public function __construct(int $id, String $nom, String $rue, String $code_postal, String $ville, bool $estAsso)
     {
-
+        $this->id = $id;
         $this->nom = $nom;
         $this->rue = $rue;
         $this->code_postal = $code_postal;
@@ -142,12 +142,6 @@ abstract class Structure
     public function setEstAsso(bool $estAsso): void
     {
         $this->estAsso = $estAsso;
-    }
-
-    public function getAllStructure(){
-        $requete = $bdd->query('SELECT * FROM structure');
-
-        return $requete;
     }
 
 }

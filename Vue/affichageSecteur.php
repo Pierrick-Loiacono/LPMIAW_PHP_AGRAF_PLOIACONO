@@ -15,17 +15,15 @@ use POO\Entity\Secteur;
         </thead>
         <tbody>
         <?php
-        while ($data = $secteurListe->fetch()) {
-        ?>
-        <tr>
-            <th scope="row"><?php echo htmlspecialchars($data['ID'])?></th>
-            <td><?php echo htmlspecialchars($data['LIBELLE'])?></td>
-        </tr>
-        <tr>
-            <?php
-            }
-            $secteurListe->closeCursor();
+        foreach ($secteurListe as $sect) {
             ?>
+            <tr>
+                <td><?php echo $sect->getId()?></td>
+                <td><?php echo $sect->getLibelle()?></td>
+            </tr>
+            <?php
+        }
+        ?>
         </tbody>
     </table>
 
