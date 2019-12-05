@@ -62,7 +62,7 @@ function form_entreprise(){
         <div class="form-group">
             <div class="aab controls col-md-4 "></div>
             <div class="controls col-md-8 ">
-                <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn-primary btn btn-info" id="submit-id-signup" />
+                <input type="submit" name="enregistrer_entreprise" value="Enregistrer" class="btn btn-primary btn btn-info" id="submit-id-signup" />
             </div>
         </div>
     `;
@@ -106,7 +106,7 @@ function form_association() {
         <div class="form-group">
             <div class="aab controls col-md-4 "></div>
             <div class="controls col-md-8 ">
-                <input type="submit" name="Enregistrer_asso" value="Enregistrer" class="btn btn-primary btn btn-info" id="submit-id-signup" />
+                <input type="submit" name="enregistrer_asso" value="Enregistrer" class="btn btn-primary btn btn-info" id="submit-id-signup" />
             </div>
         </div>
     `;
@@ -125,7 +125,7 @@ function form_secteur() {
         <div class="form-group">
             <div class="aab controls col-md-4 "></div>
             <div class="controls col-md-8 ">
-                <input type="submit" name="Enregistrer_secteur" value="Enregistrer" class="btn btn-primary btn btn-info" id="submit-id-signup" />
+                <input type="submit" name="enregistrer_secteur" value="Enregistrer" class="btn btn-primary btn btn-info" id="submit-id-signup" />
             </div>
         </div>
     `;

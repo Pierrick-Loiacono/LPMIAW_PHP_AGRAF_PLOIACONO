@@ -49,7 +49,8 @@ class EntrepriseManager
         $params = array("nom" => $e->getNom(), "rue" => $e->getRue(), "cp" => $e->getCodePostal(), "ville" => $e->getVille(), "nbActionnaires"=>$e->getActionnaires());
         $res = $GLOBALS['bdd']->prepare($req);
         $res->execute($params);
-        return $res;
+        header("Location: index.php?action=viewListeEntre");
+
     }
 
     function updateEntreprise(Entreprise $e){

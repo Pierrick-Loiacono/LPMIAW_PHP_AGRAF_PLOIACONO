@@ -6,7 +6,7 @@ use POO\Entity\Secteur;
 
 ?>
 
-    <table class="table table-striped">
+    <table class="table table-striped table-hover tt">
         <thead>
         <tr>
             <th scope="col">ID</th>
@@ -21,7 +21,7 @@ use POO\Entity\Secteur;
         <?php
         foreach ($entrepriseListe as $ent) {
             ?>
-            <tr>
+            <tr class = "clickable-row" data-href="index.php?action=<?php echo $ent->getId()?>">
                 <td><?php echo $ent->getId()?></td>
                 <td><?php echo $ent->getNom()?></td>
                 <td><?php echo $ent->getRue()?></td>

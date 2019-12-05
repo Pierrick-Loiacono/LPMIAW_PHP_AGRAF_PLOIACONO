@@ -9,7 +9,7 @@ require_once (__DIR__.'/../Modele/managers/EntrepriseManager.php');
 include('includes/header.php');
 global $bdd;
 
-if(isset($_POST['Enregistrer'])) {
+if(isset($_POST['enregistrer_entreprise'])) {
 
     $entrepriseManager = new EntrepriseManager();
     $id = $entrepriseManager->getLastId();
@@ -31,7 +31,7 @@ if(isset($_POST['Enregistrer'])) {
     <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
         <div class="panel panel-info">
             <div class="panel-body" >
-                <form method="post" action="">
+                <form method="post">
                     <form  class="form-horizontal" method="post" >
                         <div id="div_id_select" class="form-group required">
                             <label for="id_select"  class="control-label col-md-4  requiredField"> Select<span class="asteriskField"></span> </label>

@@ -1,0 +1,9 @@
+.clickable-row {
+    cursor: pointer;
+}
+
+.tt tbody tr:hover {
+    background-color:#7DD7FF;
+
+
+}
