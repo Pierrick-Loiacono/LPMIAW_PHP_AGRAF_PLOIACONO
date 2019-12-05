@@ -31,14 +31,14 @@ abstract class Structure
 
     /**
      * Structure constructor.
-     * @param int $id
+     * @param int|null $id
      * @param String $nom
      * @param String $rue
      * @param String $code_postal
      * @param String $ville
      * @param bool $estAsso
      */
-    public function __construct(int $id, String $nom, String $rue, String $code_postal, String $ville, bool $estAsso)
+    public function __construct(?int $id, String $nom, String $rue, String $code_postal, String $ville, bool $estAsso)
     {
         $this->id = $id;
         $this->nom = $nom;
@@ -51,7 +51,7 @@ abstract class Structure
     /**
      * @return mixed
      */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -59,7 +59,7 @@ abstract class Structure
     /**
      * @param mixed $id
      */
-    public function setId($id): void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }

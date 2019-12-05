@@ -1,29 +1,26 @@
 <?php
 
-use POO\Entity\Entreprise;
-use POO\Modele\managers\EntrepriseManager;
-require_once(__DIR__.'/../Vue/includes/connexion.php');
+    use POO\Entity\AssociationController;
+    use POO\Entity\EntrepriseController;
+    use POO\Entity\SecteurController;
 
-require_once (__DIR__.'/../Modele/managers/EntrepriseManager.php');
+    require_once(__DIR__.'/../Vue/includes/connexion.php');
+    require_once (__DIR__.'/../Controller/EntrepriseController.php');
+    require_once (__DIR__.'/../Controller/AssociationController.php');
+    require_once (__DIR__.'/../Controller/SecteurController.php');
 
-include('includes/header.php');
-global $bdd;
+    include('includes/header.php');
+    global $bdd;
 
-if(isset($_POST['enregistrer_entreprise'])) {
-
-    $entrepriseManager = new EntrepriseManager();
-    $id = $entrepriseManager->getLastId();
-    $nom = $_POST['nom'];
-    $rue = $_POST['rue'];
-    $cp = $_POST['postal'];
-    $ville = $_POST['ville'];
-    $estasso = false;
-    $nbdona = $_POST['actionnaire'];
-
-    $ent = new Entreprise($id, $nom, $rue, $cp, $ville, $estasso,$nbdona);
-    $entrepriseManager->insertEntreprise($ent);
-
-}
+    if(isset($_POST['enregistrer_entreprise'])) {
+        $controller = new EntrepriseController();
+        $controller->addEntreprise();
+    } elseif (isset($_POST['enregistrer_association'])){
+        $controller = new AssociationController();
+        $controller->addEntreprise();
+    } elseif (isset($_POST['enregistrer_secteur']))
+        $controller = new SecteurController();
+    $controller->addEntreprise();
 
 ?>
 

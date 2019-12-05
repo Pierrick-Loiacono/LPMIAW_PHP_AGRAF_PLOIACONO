@@ -34,7 +34,7 @@ class Entreprise extends Structure
 
     /**
      * Entreprise constructor.
-     * @param int $id
+     * @param int|null $id
      * @param string $nom
      * @param string $rue
      * @param string $code_postal
@@ -42,7 +42,7 @@ class Entreprise extends Structure
      * @param bool $estAsso
      * @param int $actionnaires
      */
-    public function __construct(int $id, string $nom, string $rue, string $code_postal, string $ville, bool $estAsso, int $actionnaires)
+    public function __construct(?int $id, string $nom, string $rue, string $code_postal, string $ville, bool $estAsso, int $actionnaires)
     {
         parent::__construct($id,$nom,$rue,$code_postal,$ville,$estAsso);
         $this->actionnaires = $actionnaires;

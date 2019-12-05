@@ -15,18 +15,23 @@ class EntrepriseController
         $this->manager = new EntrepriseManager();
     }
 
-    function viewListe(){
+    function viewListe()
+    {
 
         $entrepriseListe = $this->manager->getAllEntreprise();
 
-        require(__DIR__.'/../Vue/affichageEntreprise.php');
+        require(__DIR__ . '/../Vue/affichageEntreprise.php');
 
     }
 
-    function form(){
-        require(__DIR__.'/../Vue/creationStructure.php');
+    function form()
+    {
+        require(__DIR__ . '/../Vue/creationStructure.php');
     }
 
-
-
+    public function addEntreprise(): void
+    {
+        $ent = new Entreprise(null, $_POST['nom'], $_POST['rue'], $_POST['postal'], $_POST['ville'], false, $_POST['actionnaire']);
+        $this->manager->insertEntreprise($ent);
+    }
 }
