@@ -1,9 +1,6 @@
 <?php
     include('includes/header.php');
     global $bdd;
-
-    use POO\Entity\Secteur;
-
 ?>
 
     <table class="table table-striped">
@@ -34,7 +31,6 @@
         ?>
         </tbody>
     </table>
-    <button type="button" class="btn btn-info">Création</button>
 
 
 <?php

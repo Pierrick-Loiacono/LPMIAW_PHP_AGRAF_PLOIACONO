@@ -26,6 +26,9 @@ try {
                     $c = new AssociationController();
                     $c->viewListe();
                 break;
+                case "createStructure":
+                    require(__DIR__.'/Vue/creationStructure.php');
+                    break;
                 default: // Accueil
                     require(__DIR__.'/Vue/accueil.php');
                     break;

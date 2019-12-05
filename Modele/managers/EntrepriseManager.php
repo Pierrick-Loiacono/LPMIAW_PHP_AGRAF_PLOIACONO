@@ -9,9 +9,9 @@ require_once (__DIR__.'/../entities/Entreprise.php');
 class EntrepriseManager
 {
 
-    function getAllEntreprise($bdd){
+    function getAllEntreprise(){
         // fonction qui retourne toutes les entreprises
-        $requete = $bdd->prepare('SELECT * FROM structure where ESTASSO = false');
+        $requete = $GLOBALS['bdd']->prepare('SELECT * FROM structure where ESTASSO = false');
         $requete->execute();
 
         $entreprises = $requete->fetchAll();
@@ -22,6 +22,21 @@ class EntrepriseManager
                 $entreprise["VILLE"],false, $entreprise["NB_ACTIONNAIRES"]);
         }
         return $entreprisesEntities;
+
+    }
+
+    function getLastId(){
+
+        // fonction qui retourne toutes les entreprises
+        $requete = $GLOBALS['bdd']->prepare('SELECT id FROM structure where ESTASSO = false ORDER BY id DESC LIMIT 1');
+        $requete->execute();
+        $ligne = $requete->fetch();
+        $id = intval($ligne['id']) + 1;
+
+        return $id;
+    }
+
+    function addEntreprise(){
 
     }
 

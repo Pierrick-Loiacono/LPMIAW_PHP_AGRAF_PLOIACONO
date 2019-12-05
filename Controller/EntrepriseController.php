@@ -17,7 +17,7 @@ class EntrepriseController
 
     function viewListe(){
 
-        $entrepriseListe = $this->manager->getAllEntreprise($GLOBALS['bdd']);
+        $entrepriseListe = $this->manager->getAllEntreprise();
 
         require(__DIR__.'/../Vue/affichageEntreprise.php');
 
@@ -26,5 +26,7 @@ class EntrepriseController
     function form(){
         require(__DIR__.'/../Vue/creationStructure.php');
     }
+
+
 
 }

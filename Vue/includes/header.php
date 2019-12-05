@@ -30,6 +30,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?action=viewListeSect">Secteurs</a>
                 </li>
+                <li class="nav-item">
+                    <a href="index.php?action=createStructure" type="button" class="btn btn-info">Création</a>
+                </li>
             </ul>
         </div>
     </nav>
