@@ -20,16 +20,16 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Accueil<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="">Accueil<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Structures</a>
+                    <a class="nav-link" href="index.php?action=viewListeEntre">Entreprises</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Associations</a>
+                    <a class="nav-link" href="index.php?action=viewListeAsso">Associations</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Secteurs</a>
+                    <a class="nav-link" href="index.php?action=viewListeSect">Secteurs</a>
                 </li>
             </ul>
         </div>
