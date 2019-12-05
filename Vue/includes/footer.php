@@ -1,6 +1,8 @@
 
 
-<script src="Public/js/bootstrap.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="Public/js/jquery.min.js"></script>
+<script src="Public/js/bootstrap.js"></script>
+<script src="Public/js/script.js"></script>
 
 </body>
 </html>

@@ -12,22 +12,22 @@ require_once('Structure.php');
 class Entreprise extends Structure
 {
     /**
-     * @var string
+     * @var int
      */
     private $actionnaires;
 
     /**
-     * @return string
+     * @return int
      */
-    public function getActionnaires(): string
+    public function getActionnaires(): int
     {
         return $this->actionnaires;
     }
 
     /**
-     * @param string $actionnaires
+     * @param int $actionnaires
      */
-    public function setActionnaires(string $actionnaires): void
+    public function setActionnaires(int $actionnaires): void
     {
         $this->actionnaires = $actionnaires;
     }
@@ -40,9 +40,9 @@ class Entreprise extends Structure
      * @param string $code_postal
      * @param string $ville
      * @param bool $estAsso
-     * @param string $actionnaires
+     * @param int $actionnaires
      */
-    public function __construct(int $id, string $nom, string $rue, string $code_postal, string $ville, bool $estAsso, $actionnaires)
+    public function __construct(int $id, string $nom, string $rue, string $code_postal, string $ville, bool $estAsso, int $actionnaires)
     {
         parent::__construct($id,$nom,$rue,$code_postal,$ville,$estAsso);
         $this->actionnaires = $actionnaires;
