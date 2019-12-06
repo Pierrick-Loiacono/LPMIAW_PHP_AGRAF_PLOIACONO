@@ -1,43 +1,17 @@
 <?php
 namespace POO\Modele\managers;
 
+use PDOStatement;
 use POO\Entity\Entity;
 use POO\Entity\Entreprise;
+
+require_once('PDOManager.php');
 
 require_once(__DIR__.'/../../Vue/includes/connexion.php');
 require_once (__DIR__.'/../entities/Entreprise.php');
 
-class EntrepriseManager
+class EntrepriseManager extends PDOManager
 {
-
-    function getAllEntreprise() : array
-    {
-        // fonction qui retourne toutes les entreprises
-        $requete = $GLOBALS['bdd']->prepare('SELECT * FROM structure where ESTASSO = false');
-        $requete->execute();
-
-        $entreprises = $requete->fetchAll();
-
-        $entreprisesEntities=[];
-        foreach($entreprises as $entreprise) {
-            $entreprisesEntities[] = new Entreprise($entreprise["ID"],$entreprise["NOM"],$entreprise["RUE"],$entreprise["CP"],
-                $entreprise["VILLE"],false, $entreprise["NB_ACTIONNAIRES"]);
-        }
-        return $entreprisesEntities;
-
-    }
-
-    function getLastId(){
-
-        // fonction qui retourne toutes les entreprises
-        $requete = $GLOBALS['bdd']->prepare('SELECT id FROM structure where ESTASSO = false ORDER BY id DESC LIMIT 1');
-        $requete->execute();
-        $ligne = $requete->fetch();
-        $id = intval($ligne['id']) + 1;
-
-        return $id;
-    }
-
     /**
      * @param Entity $e
      * @return
@@ -74,4 +48,33 @@ class EntrepriseManager
         return $res;
     }
 
+    public function findById(int $id): ?Entity
+    {
+        // TODO: Implement findById() method.
+    }
+
+    public function find(): PDOStatement
+    {
+        $stmt=$this->executePrepare("SELECT * FROM structure where ESTASSO = false",[]);
+        return $stmt;
+    }
+
+    public function findAll(int $pdoFecthMode): array
+    {
+        // fonction qui retourne toutes les entreprises
+        $stmt=$this->find();
+        $entreprises = $stmt->fetchAll($pdoFecthMode);
+
+        $entreprisesEntities=[];
+        foreach($entreprises as $entreprise) {
+            $entreprisesEntities[] = new Entreprise($entreprise["ID"],$entreprise["NOM"],$entreprise["RUE"],$entreprise["CP"],
+                $entreprise["VILLE"],false, $entreprise["NB_ACTIONNAIRES"]);
+        }
+        return $entreprisesEntities;
+    }
+
+    public function insert(Entity $e): PDOStatement
+    {
+        // TODO: Implement insert() method.
+    }
 }

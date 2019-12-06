@@ -17,10 +17,10 @@
         $controller->addEntreprise();
     } elseif (isset($_POST['enregistrer_association'])){
         $controller = new AssociationController();
-        $controller->addEntreprise();
+//        $controller->addEntreprise();
     } elseif (isset($_POST['enregistrer_secteur']))
         $controller = new SecteurController();
-    $controller->addEntreprise();
+//    $controller->addEntreprise();
 
 ?>
 
@@ -41,9 +41,7 @@
                         <div id="form_create">
 
                         </div>
-
                     </form>
-
                 </form>
             </div>
         </div>
