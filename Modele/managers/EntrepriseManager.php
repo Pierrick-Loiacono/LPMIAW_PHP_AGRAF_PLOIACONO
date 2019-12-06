@@ -18,12 +18,7 @@ class EntrepriseManager extends PDOManager
      */
     function insertEntreprise(Entreprise $e)
     {
-        $req = "INSERT INTO structure(nom, rue, cp, ville, nb_actionnaires, estasso, nb_donateurs) 
-                            VALUES (:nom, :rue, :cp, :ville, :nbActionnaires, false, null)";
-        $params = array("nom" => $e->getNom(), "rue" => $e->getRue(), "cp" => $e->getCodePostal(), "ville" => $e->getVille(), "nbActionnaires"=>$e->getActionnaires());
-        $res = $GLOBALS['bdd']->prepare($req);
-        $res->execute($params);
-        header("Location: index.php?action=viewListeEntre");
+
 
     }
 
@@ -75,6 +70,10 @@ class EntrepriseManager extends PDOManager
 
     public function insert(Entity $e): PDOStatement
     {
-        // TODO: Implement insert() method.
+        $req = "INSERT INTO structure(nom, rue, cp, ville, nb_actionnaires, estasso, nb_donateurs) 
+                            VALUES (:nom, :rue, :cp, :ville, :nbActionnaires, false, null)";
+        $params = array("nom" => $e->getNom(), "rue" => $e->getRue(), "cp" => $e->getCodePostal(), "ville" => $e->getVille(), "nbActionnaires"=>$e->getActionnaires());
+        $res=$this->executePrepare($req, $params);
+        return $res;
     }
 }

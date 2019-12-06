@@ -1,29 +1,6 @@
 <?php
-
-    use POO\Entity\AssociationController;
-    use POO\Entity\EntrepriseController;
-    use POO\Entity\SecteurController;
-
-    require_once(__DIR__.'/../Vue/includes/connexion.php');
-    require_once (__DIR__.'/../Controller/EntrepriseController.php');
-    require_once (__DIR__.'/../Controller/AssociationController.php');
-    require_once (__DIR__.'/../Controller/SecteurController.php');
-
     include('includes/header.php');
-    global $bdd;
-
-    if(isset($_POST['enregistrer_entreprise'])) {
-        $controller = new EntrepriseController();
-        $controller->addEntreprise();
-    } elseif (isset($_POST['enregistrer_association'])){
-        $controller = new AssociationController();
-//        $controller->addEntreprise();
-    } elseif (isset($_POST['enregistrer_secteur']))
-        $controller = new SecteurController();
-//    $controller->addEntreprise();
-
 ?>
-
 <div class="container">
     <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
         <div class="panel panel-info">

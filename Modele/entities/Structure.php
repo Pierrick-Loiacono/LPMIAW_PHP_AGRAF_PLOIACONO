@@ -1,8 +1,8 @@
 <?php
 
 namespace POO\Entity;
-
-abstract class Structure
+require_once('Entity.php');
+abstract class Structure extends Entity
 {
     /**
      * @var
