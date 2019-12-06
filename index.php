@@ -31,10 +31,14 @@ try {
                     if(isset($_POST['enregistrer_entreprise'])) {
                         $controller = new EntrepriseController();
                         $controller->addEntreprise();
+                    }elseif (isset($_POST['enregistrer_association'])){
+                        $controller = new AssociationController();
+                        $controller->addAssociation();
+                    }elseif (isset($_POST['enregistrer_secteur'])){
+                        $controller = new SecteurController();
+                        $controller->addSecteur();
                     }
-//        $controller->addEntreprise();
 
-//    $controller->addEntreprise();
                     break;
                 default: // Accueil
                     require(__DIR__.'/Vue/accueil.php');

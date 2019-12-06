@@ -26,4 +26,12 @@ class AssociationController
 
     }
 
+    public function addAssociation(): void
+    {
+        $ass = new Association(null, $_POST['nom'], $_POST['rue'], $_POST['postal'], $_POST['ville'], false, $_POST['donnateurs']);
+        $this->insert($ass);
+        header("Location: index.php?action=viewListeAsso");
+
+    }
+
 }
