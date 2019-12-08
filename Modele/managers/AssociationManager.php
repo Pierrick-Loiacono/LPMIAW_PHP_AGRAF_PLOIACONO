@@ -11,9 +11,6 @@ require_once(__DIR__.'/../entities/Association.php');
 
 class AssociationManager extends PDOManager
 {
-    function getAllAssociation(int $pdoFecthMode): array{
-
-    }
 
     public function findById(int $id): ?Entity
     {
