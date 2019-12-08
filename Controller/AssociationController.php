@@ -5,12 +5,12 @@ namespace POO\Entity;
 use POO\Entity\Secteur;
 use POO\Modele\managers\AssociationManager;
 
+require_once('AdminController.php');
 require_once('Modele/entities/Secteur.php');
 require_once(__DIR__ . '/../Modele/managers/AssociationManager.php');
-
 require_once(__DIR__.'/../Vue/includes/connexion.php');
 
-class AssociationController
+class AssociationController extends AdminController
 {
 
     public function __construct()
@@ -20,7 +20,7 @@ class AssociationController
 
     function viewListe(){
 
-        $associationListe = $this->manager->getAllAssociation($GLOBALS['bdd']);
+        $associationListe = $this->findAll();
 
         require(__DIR__.'/../Vue/affichageListe.php');
 
