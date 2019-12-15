@@ -13,6 +13,7 @@ class Association extends Structure
 
     /**
      * Association constructor.
+     * @param int|null $id
      * @param string $nom
      * @param string $rue
      * @param string $code_postal
@@ -20,7 +21,7 @@ class Association extends Structure
      * @param bool $estAsso
      * @param string $donateurs
      */
-    public function __construct(int $id,string $nom, string $rue, string $code_postal, string $ville, bool $estAsso, string $donateurs)
+    public function __construct(?int $id,string $nom, string $rue, string $code_postal, string $ville, bool $estAsso, string $donateurs)
     {
         parent::__construct($id, $nom, $rue, $code_postal, $ville, $estAsso);
         $this->donateurs = $donateurs;
@@ -35,9 +36,9 @@ class Association extends Structure
     }
 
     /**
-     * @param string $donateurs
+     * @param int $donateurs
      */
-    public function setDonateurs(string $donateurs): void
+    public function setDonateurs(int $donateurs): void
     {
         $this->donateurs = $donateurs;
     }

@@ -28,7 +28,7 @@ class AssociationController extends AdminController
 
     public function addAssociation(): void
     {
-        $ass = new Association(null, $_POST['nom'], $_POST['rue'], $_POST['postal'], $_POST['ville'], true, $_POST['donateurs']);
+        $ass = new Association(null, $_POST['nom_asso'], $_POST['rue_asso'], $_POST['postal_asso'], $_POST['ville_asso'], true, $_POST['donateur']);
         $this->insert($ass);
         header("Location: index.php?action=viewListeAsso");
 

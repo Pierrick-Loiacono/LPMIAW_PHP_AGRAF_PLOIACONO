@@ -6,6 +6,7 @@ use POO\Entity\Entity;
 use POO\Entity\Association;
 
 require_once('PDOManager.php');
+
 require_once(__DIR__.'/../../Vue/includes/connexion.php');
 require_once(__DIR__.'/../entities/Association.php');
 
@@ -40,7 +41,7 @@ class AssociationManager extends PDOManager
     public function insert(Entity $e): PDOStatement
     {
         $req = "INSERT INTO structure(nom, rue, cp, ville, nb_actionnaires, estasso, nb_donateurs) 
-                            VALUES (:nom, :rue, :cp, :ville, :nbDonateurs, true, null)";
+                            VALUES (:nom, :rue, :cp, :ville, null, true, :nbDonateurs)";
         $params = array("nom" => $e->getNom(), "rue" => $e->getRue(), "cp" => $e->getCodePostal(), "ville" => $e->getVille(), "nbDonateurs"=>$e->getDonateurs());
         $res=$this->executePrepare($req, $params);
         return $res;
