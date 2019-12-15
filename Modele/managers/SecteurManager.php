@@ -6,6 +6,7 @@ use POO\Entity\Entity;
 use POO\Entity\Secteur;
 
 require_once('PDOManager.php');
+
 require_once(__DIR__.'/../../Vue/includes/connexion.php');
 require_once (__DIR__.'/../entities/Secteur.php');
 
@@ -38,6 +39,9 @@ class SecteurManager extends PDOManager
 
     public function insert(Entity $e): PDOStatement
     {
-        // TODO: Implement insert() method.
+        $req = "INSERT INTO secteur(libelle) VALUES (:libelle)";
+        $params = array("libelle" => $e->getLibelle());
+        $res = $this->executePrepare($req, $params);
+        return $res;
     }
 }

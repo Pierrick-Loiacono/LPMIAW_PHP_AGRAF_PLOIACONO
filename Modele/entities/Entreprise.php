@@ -17,6 +17,22 @@ class Entreprise extends Structure
     private $actionnaires;
 
     /**
+     * Entreprise constructor.
+     * @param int|null $id
+     * @param string $nom
+     * @param string $rue
+     * @param string $code_postal
+     * @param string $ville
+     * @param bool $estAsso
+     * @param int $actionnaires
+     */
+    public function __construct(?int $id, string $nom, string $rue, string $code_postal, string $ville, bool $estAsso, int $actionnaires)
+    {
+        parent::__construct($id,$nom,$rue,$code_postal,$ville,$estAsso);
+        $this->actionnaires = $actionnaires;
+    }
+
+    /**
      * @return int
      */
     public function getActionnaires(): int
@@ -32,20 +48,6 @@ class Entreprise extends Structure
         $this->actionnaires = $actionnaires;
     }
 
-    /**
-     * Entreprise constructor.
-     * @param int|null $id
-     * @param string $nom
-     * @param string $rue
-     * @param string $code_postal
-     * @param string $ville
-     * @param bool $estAsso
-     * @param int $actionnaires
-     */
-    public function __construct(?int $id, string $nom, string $rue, string $code_postal, string $ville, bool $estAsso, int $actionnaires)
-    {
-        parent::__construct($id,$nom,$rue,$code_postal,$ville,$estAsso);
-        $this->actionnaires = $actionnaires;
-    }
+
 
 }

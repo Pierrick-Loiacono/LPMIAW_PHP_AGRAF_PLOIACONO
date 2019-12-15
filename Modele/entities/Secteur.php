@@ -1,11 +1,12 @@
 <?php
 
 namespace POO\Entity;
+require_once('Entity.php');
 
-class Secteur
+class Secteur extends Entity
 {
     /**
-     * @var int
+     * @var
      */
     private $id;
     /**
@@ -15,27 +16,27 @@ class Secteur
 
     /**
      * Secteur constructor.
-     * @param int $id
+     * @param int|null $id
      * @param String $libelle
      */
-    public function __construct(int $id, String $libelle)
+    public function __construct(?int $id, String $libelle)
     {
         $this->id = $id;
         $this->libelle = $libelle;
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param int $id
+     * @param mixed $id
      */
-    public function setId(int $id): void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }

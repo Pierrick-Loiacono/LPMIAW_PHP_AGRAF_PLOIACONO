@@ -12,36 +12,6 @@ require_once (__DIR__.'/../entities/Entreprise.php');
 
 class EntrepriseManager extends PDOManager
 {
-    /**
-     * @param Entity $e
-     * @return
-     */
-    function insertEntreprise(Entreprise $e)
-    {
-
-
-    }
-
-    function updateEntreprise(Entreprise $e){
-        $req= "UPDATE structure(nom, rue, cp, ville, nb_actionnaires) SET (:nom, :rue, :cp, :ville, :nb_actionnaires) WHERE id=".$e->getId();
-        $params = array(
-            "nom"            => $e->getNom(),
-            "rue"            => $e->getRue(),
-            "cp"             => $e->getCodePostal(),
-            "ville"          => $e->getVille(),
-            "nbActionnaires" => $e->getActionnaires()
-        );
-        $res = $GLOBALS['bdd']->prepare($req);
-        $res->execute($params);
-        return $res;
-    }
-
-    public function deleteEntreprise(Entity $e): PDOStatement {
-        $req = "DELETE * from structure WHERE id=".$e->getId();
-        $res = $GLOBALS['bdd']->prepare($req);
-        $res->execute();
-        return $res;
-    }
 
     public function findById(int $id): ?Entity
     {
@@ -73,7 +43,30 @@ class EntrepriseManager extends PDOManager
         $req = "INSERT INTO structure(nom, rue, cp, ville, nb_actionnaires, estasso, nb_donateurs) 
                             VALUES (:nom, :rue, :cp, :ville, :nbActionnaires, false, null)";
         $params = array("nom" => $e->getNom(), "rue" => $e->getRue(), "cp" => $e->getCodePostal(), "ville" => $e->getVille(), "nbActionnaires"=>$e->getActionnaires());
-        $res=$this->executePrepare($req, $params);
+        $res = $this->executePrepare($req, $params);
         return $res;
     }
+
+    function updateEntreprise(Entreprise $e){
+        $req= "UPDATE structure(nom, rue, cp, ville, nb_actionnaires) SET (:nom, :rue, :cp, :ville, :nb_actionnaires) WHERE id=".$e->getId();
+        $params = array(
+            "nom"            => $e->getNom(),
+            "rue"            => $e->getRue(),
+            "cp"             => $e->getCodePostal(),
+            "ville"          => $e->getVille(),
+            "nbActionnaires" => $e->getActionnaires()
+        );
+        $res = $GLOBALS['bdd']->prepare($req);
+        $res->execute($params);
+        return $res;
+    }
+
+    public function deleteEntreprise(Entity $e): PDOStatement {
+        $req = "DELETE * from structure WHERE id=".$e->getId();
+        $res = $GLOBALS['bdd']->prepare($req);
+        $res->execute();
+        return $res;
+    }
+
+
 }

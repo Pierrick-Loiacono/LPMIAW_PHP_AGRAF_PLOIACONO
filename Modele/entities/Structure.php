@@ -6,7 +6,7 @@ abstract class Structure extends Entity
 {
     /**
      * @var
-     */
+*/
     private $id;
     /**
      * @var String

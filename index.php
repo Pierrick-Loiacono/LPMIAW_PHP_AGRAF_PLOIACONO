@@ -28,6 +28,7 @@ try {
                 break;
                 case "createStructure":
                     require(__DIR__.'/Vue/creationStructure.php');
+
                     if(isset($_POST['enregistrer_entreprise'])) {
                         $controller = new EntrepriseController();
                         $controller->addEntreprise();
