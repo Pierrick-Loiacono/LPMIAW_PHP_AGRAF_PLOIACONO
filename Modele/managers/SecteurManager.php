@@ -15,7 +15,10 @@ class SecteurManager extends PDOManager
 
     public function findById(int $id): ?Entity
     {
-        // TODO: Implement findById() method.
+        $stmt = $this->executePrepare("SELECT * FROM secteur WHERE id=:id", ["id" => $id]);
+        $secteur = $stmt->fetch();
+        if (!$secteur) return null;
+        return new Secteur($secteur["ID"], $secteur["LIBELLE"]);
     }
 
     public function find(): PDOStatement
@@ -44,4 +47,13 @@ class SecteurManager extends PDOManager
         $res = $this->executePrepare($req, $params);
         return $res;
     }
+
+    public function update(Entity $e): PDOStatement
+    {
+        $req = "UPDATE secteur SET libelle = :libelle WHERE id = :id";
+        $params = ["libelle" => $e->getLibelle(), "id" => $e->getId()];
+        $res = $this->executePrepare($req, $params);
+        return $res;
+    }
+
 }

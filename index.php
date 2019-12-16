@@ -1,12 +1,12 @@
 <?php
 
 require_once('Modele/entities/Secteur.php');
+require_once('Modele/managers/SecteurManager.php');
 require_once('Controller/AssociationController.php');
-require_once ('Controller/EntrepriseController.php');
-require_once ('Controller/SecteurController.php');
-require_once ('Controller/SecteurController.php');
+require_once('Controller/EntrepriseController.php');
+require_once('Controller/SecteurController.php');
 
-
+use POO\Modele\managers\SecteurManager;
 use POO\Entity\AssociationController;
 use POO\Entity\EntrepriseController;
 use POO\Entity\SecteurController;
@@ -41,6 +41,19 @@ try {
                     }
 
                     break;
+                case "editSecteur": // Liste des Associations
+                    $manager = new SecteurManager();
+                    $secteur = $manager->findById(intval($_GET['id']));
+                    if (isset($_POST['modifier_secteur'])){
+                        $secteur->setLibelle($_POST['nom_secteur']);
+                        $manager->update($secteur);
+                        header("Location: index.php?action=viewListeSect");
+
+                    } else {
+                        require(__DIR__.'/Vue/editionSecteur.php');
+                    }
+                    break;
+
                 default: // Accueil
                     require(__DIR__.'/Vue/accueil.php');
                     break;

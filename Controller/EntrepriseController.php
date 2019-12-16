@@ -19,7 +19,7 @@ class EntrepriseController extends AdminController
     function viewListe()
     {
         $entrepriseListe = $this->findAll();
-        require(__DIR__ . '/../Vue/affichageEntreprise.php');
+        require(__DIR__ . '/../Vue/affichageListe.php');
     }
 
     public function addEntreprise(): void

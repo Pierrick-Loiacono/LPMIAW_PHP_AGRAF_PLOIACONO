@@ -19,12 +19,19 @@ class SecteurController extends AdminController
     function viewListe()
     {
         $secteurListe = $this->findAll();
-        require(__DIR__.'/../Vue/affichageSecteur.php');
+        require(__DIR__.'/../Vue/affichageListe.php');
     }
 
     public function addSecteur(): void
     {
         $ent = new Secteur(null, $_POST['nom_asso']);
+        $this->insert($ent);
+        header("Location: index.php?action=viewListeSect");
+    }
+
+    public function editSecteur(): void
+    {
+        $ent = new Secteur(null, $_POST['nom_secteur']);
         $this->insert($ent);
         header("Location: index.php?action=viewListeSect");
     }
