@@ -19,6 +19,7 @@ class SecteurManager extends PDOManager
         $secteur = $stmt->fetch();
         if (!$secteur) return null;
         return new Secteur($secteur["ID"], $secteur["LIBELLE"]);
+
     }
 
     public function find(): PDOStatement

@@ -7,7 +7,7 @@
             <label for="id_name" class="control-label col-md-4  requiredField">Nom<span class="asteriskField">*</span> </label>
             <div class="controls col-md-8 ">
                 <input class="input-md  textinput textInput form-control" id="id_name_secteur" maxlength="30" required name="nom_secteur"
-                       placeholder="Nom du secteur" style="margin-bottom: 10px" type="text" value="<?= $secteur->getLibelle() ?>" />
+                       placeholder="Nom du secteur" style="margin-bottom: 10px" type="text" value="<?php echo $secteur->getLibelle() ?>" />
             </div>
         </div>
         <div class="form-group">

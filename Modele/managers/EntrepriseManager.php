@@ -15,7 +15,10 @@ class EntrepriseManager extends PDOManager
 
     public function findById(int $id): ?Entity
     {
-        // TODO: Implement findById() method.
+        $stmt = $this->executePrepare("SELECT * FROM structure WHERE id=:id", ["id" => $id]);
+        $entreprise = $stmt->fetch();
+        if (!$entreprise) return null;
+        return new Entreprise($entreprise["ID"], $entreprise["NOM"], $entreprise["RUE"],$entreprise["CP"],$entreprise["VILLE"],false,$entreprise["NB_ACTIONNAIRES"]);
     }
 
     public function find(): PDOStatement
@@ -47,19 +50,23 @@ class EntrepriseManager extends PDOManager
         return $res;
     }
 
-    function updateEntreprise(Entreprise $e){
-        $req= "UPDATE structure(nom, rue, cp, ville, nb_actionnaires) SET (:nom, :rue, :cp, :ville, :nb_actionnaires) WHERE id=".$e->getId();
-        $params = array(
-            "nom"            => $e->getNom(),
-            "rue"            => $e->getRue(),
-            "cp"             => $e->getCodePostal(),
-            "ville"          => $e->getVille(),
-            "nbActionnaires" => $e->getActionnaires()
-        );
-        $res = $GLOBALS['bdd']->prepare($req);
-        $res->execute($params);
+    public function update(Entity $e): PDOStatement
+    {
+        $req = "UPDATE structure SET nom=:nom, rue=:rue, cp=:cp, ville=:ville, nb_actionnaires=:nb_actionnaires WHERE id = :id";
+
+        $params = [
+            "nom" => $e->getNom(),
+            "rue" => $e->getRue(),
+            "cp" => $e->getCodePostal(),
+            "ville" => $e->getVille(),
+            "nb_actionnaires" => $e->getActionnaires(),
+            "id"=> $e->getId()
+        ];
+
+        $res = $this->executePrepare($req, $params);
         return $res;
     }
+
 
     public function deleteEntreprise(Entity $e): PDOStatement {
         $req = "DELETE * from structure WHERE id=".$e->getId();
