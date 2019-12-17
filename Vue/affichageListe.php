@@ -19,7 +19,9 @@
         </thead>
         <tbody>
         <?php
+
         foreach ($associationListe as $asso) {
+
         ?>
             <tr class = "clickable-row" data-href="index.php?action=editAsso&id=<?php echo $asso->getId()?>">
                 <td><?php echo $asso->getId()?></td>

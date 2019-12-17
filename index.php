@@ -72,7 +72,7 @@ try {
                     }
 
                     break;
-                    case "editAsso": //edition des entreprises
+                case "editAsso": //edition des entreprises
                     $manager = new AssociationManager();
                     $entity = $manager->findById(intval($_GET['id']));
                     if (isset($_POST['modifier_entity'])){
