@@ -137,7 +137,9 @@ abstract class PDOManager
         try {
             $conn = $this->dbConnect();
             $stmt = $conn->prepare($req);
+
             $res = $stmt->execute($params);
+
             return $stmt;
         }
         catch (PDOException $ex) {

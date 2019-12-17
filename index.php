@@ -7,6 +7,7 @@ require_once('Controller/AssociationController.php');
 require_once('Controller/EntrepriseController.php');
 require_once('Controller/SecteurController.php');
 
+use POO\Modele\managers\AssociationManager;
 use POO\Modele\managers\EntrepriseManager;
 use POO\Modele\managers\SecteurManager;
 use POO\Entity\AssociationController;
@@ -57,15 +58,31 @@ try {
                     break;
                 case "editEntreprise": //edition des entreprises
                     $manager = new EntrepriseManager();
-                    $entreprise = $manager->findById(intval($_GET['id']));
-                    if (isset($_POST['modifier_entreprise'])){
-                        $entreprise->setNom($_POST['nom_entreprise']);
-                        $entreprise->setRue($_POST['rue_entreprise']);
-                        $entreprise->setCodePostal($_POST['postal_entreprise']);
-                        $entreprise->setVille($_POST['ville_entreprise']);
-                        $entreprise->setActionnaires(intval($_POST['actionnaire_entreprise']));
-                        $manager->update($entreprise);
+                    $entity = $manager->findById(intval($_GET['id']));
+                    if (isset($_POST['modifier_entity'])){
+                        $entity->setNom($_POST['nom_entity']);
+                        $entity->setRue($_POST['rue_entity']);
+                        $entity->setCodePostal($_POST['postal_entity']);
+                        $entity->setVille($_POST['ville_entity']);
+                        $entity->setActionnaires(intval($_POST['actionnaire_entreprise']));
+                        $manager->update($entity);
                         header("Location: index.php?action=viewListeEntre");
+                    } else {
+                        require(__DIR__.'/Vue/editionStructure.php');
+                    }
+
+                    break;
+                    case "editAsso": //edition des entreprises
+                    $manager = new AssociationManager();
+                    $entity = $manager->findById(intval($_GET['id']));
+                    if (isset($_POST['modifier_entity'])){
+                        $entity->setNom($_POST['nom_entity']);
+                        $entity->setRue($_POST['rue_entity']);
+                        $entity->setCodePostal($_POST['postal_entity']);
+                        $entity->setVille($_POST['ville_entity']);
+                        $entity->setDonateurs(intval($_POST['donateur_association']));
+                        $manager->update($entity);
+                        header("Location: index.php?action=viewListeAsso");
                     } else {
                         require(__DIR__.'/Vue/editionStructure.php');
                     }

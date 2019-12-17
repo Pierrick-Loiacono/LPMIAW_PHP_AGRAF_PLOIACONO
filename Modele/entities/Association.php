@@ -19,18 +19,18 @@ class Association extends Structure
      * @param string $code_postal
      * @param string $ville
      * @param bool $estAsso
-     * @param string $donateurs
+     * @param int $donateurs
      */
-    public function __construct(?int $id,string $nom, string $rue, string $code_postal, string $ville, bool $estAsso, string $donateurs)
+    public function __construct(?int $id,string $nom, string $rue, string $code_postal, string $ville, bool $estAsso, int $donateurs)
     {
         parent::__construct($id, $nom, $rue, $code_postal, $ville, $estAsso);
         $this->donateurs = $donateurs;
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getDonateurs(): string
+    public function getDonateurs(): int
     {
         return $this->donateurs;
     }

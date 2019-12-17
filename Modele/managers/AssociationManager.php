@@ -15,7 +15,10 @@ class AssociationManager extends PDOManager
 
     public function findById(int $id): ?Entity
     {
-        // TODO: Implement findById() method.
+        $stmt = $this->executePrepare("SELECT * FROM structure WHERE id=:id", ["id" => $id]);
+        $association = $stmt->fetch();
+        if (!$association) return null;
+        return new Association($association["ID"], $association["NOM"], $association["RUE"],$association["CP"],$association["VILLE"],true,$association["NB_DONATEURS"]);
     }
 
     public function find(): PDOStatement
@@ -44,6 +47,23 @@ class AssociationManager extends PDOManager
                             VALUES (:nom, :rue, :cp, :ville, null, true, :nbDonateurs)";
         $params = array("nom" => $e->getNom(), "rue" => $e->getRue(), "cp" => $e->getCodePostal(), "ville" => $e->getVille(), "nbDonateurs"=>$e->getDonateurs());
         $res=$this->executePrepare($req, $params);
+        return $res;
+    }
+
+    public function update(Entity $e): PDOStatement
+    {
+        $req = "UPDATE structure SET nom=:nom, rue=:rue, cp=:cp, ville=:ville, nb_donateurs=:nb_donateurs WHERE id = :id";
+
+        $params = [
+            "nom" => $e->getNom(),
+            "rue" => $e->getRue(),
+            "cp" => $e->getCodePostal(),
+            "ville" => $e->getVille(),
+            "nb_donateurs" => $e->getDonateurs(),
+            "id"=> $e->getId()
+        ];
+        $res = $this->executePrepare($req, $params);
+
         return $res;
     }
 }
