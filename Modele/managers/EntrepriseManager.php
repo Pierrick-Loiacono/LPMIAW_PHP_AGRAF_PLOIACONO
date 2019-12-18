@@ -68,10 +68,12 @@ class EntrepriseManager extends PDOManager
     }
 
 
-    public function deleteEntreprise(Entity $e): PDOStatement {
-        $req = "DELETE * from structure WHERE id=".$e->getId();
-        $res = $GLOBALS['bdd']->prepare($req);
-        $res->execute();
+    public function delete(Entity $e): PDOStatement {
+        $req = "DELETE from structure WHERE id = :id";
+        $params = [
+            "id"=> $e->getId()
+        ];
+        $res = $this->executePrepare($req, $params);
         return $res;
     }
 

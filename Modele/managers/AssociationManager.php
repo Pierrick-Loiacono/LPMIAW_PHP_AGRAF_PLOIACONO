@@ -66,4 +66,13 @@ class AssociationManager extends PDOManager
 
         return $res;
     }
+
+    public function delete(Entity $e): PDOStatement {
+        $req = "DELETE from structure WHERE id = :id";
+        $params = [
+            "id"=> $e->getId()
+        ];
+        $res = $this->executePrepare($req, $params);
+        return $res;
+    }
 }

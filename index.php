@@ -52,7 +52,10 @@ try {
                         $manager->update($secteur);
                         header("Location: index.php?action=viewListeSect");
 
-                    } else {
+                    } elseif (isset($_POST['supprimer_secteur'])) {
+                        $manager->delete($secteur);
+                        header("Location: index.php?action=viewListeSect");
+                    }else {
                         require(__DIR__.'/Vue/editionSecteur.php');
                     }
                     break;
@@ -67,7 +70,10 @@ try {
                         $entity->setActionnaires(intval($_POST['actionnaire_entreprise']));
                         $manager->update($entity);
                         header("Location: index.php?action=viewListeEntre");
-                    } else {
+                    } elseif (isset($_POST['supprimer_entity'])) {
+                        $manager->delete($entity);
+                        header("Location: index.php?action=viewListeEntre");
+                    }else {
                         require(__DIR__.'/Vue/editionStructure.php');
                     }
 
@@ -83,6 +89,9 @@ try {
                         $entity->setDonateurs(intval($_POST['donateur_association']));
                         $manager->update($entity);
                         header("Location: index.php?action=viewListeAsso");
+                    } elseif (isset($_POST['supprimer_entity'])) {
+                       $manager->delete($entity);
+                       header("Location: index.php?action=viewListeAsso");
                     } else {
                         require(__DIR__.'/Vue/editionStructure.php');
                     }

@@ -13,5 +13,13 @@
 
 </script>
 
+<script>
+    $(function() {
+        $('.confirm').click(function() {
+            return window.confirm("Êtes-vous sur ?");
+        });
+    });
+</script>
+
 </body>
 </html>

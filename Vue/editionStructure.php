@@ -7,7 +7,7 @@
             <label for="id_name" class="control-label col-md-4  requiredField">Nom<span class="asteriskField">*</span> </label>
             <div class="controls col-md-8 ">
                 <input class="input-md  textinput textInput form-control" id="id_name" required maxlength="30" name="nom_entity"
-                       placeholder="nom de l'entreprise" style="margin-bottom: 10px" type="text" value="<?php echo $entity->getNom()?>"/>
+                       placeholder="Nom de la structure" style="margin-bottom: 10px" type="text" value="<?php echo $entity->getNom()?>"/>
             </div>
         </div>
         <div id="div_id_rue" class="form-group required">
@@ -59,6 +59,7 @@
             <div class="aab controls col-md-4 "></div>
             <div class="controls col-md-8 ">
                 <input type="submit" name="modifier_entity" value="Modifier" class="btn btn-primary btn btn-info" id="submit-id-signup" />
+                <input type="submit" name="supprimer_entity" value="Supprimer" class="btn btn-primary btn btn-danger confirm" id="submit-id-signup" />
             </div>
         </div>
     </form>

@@ -14,6 +14,7 @@
             <div class="aab controls col-md-4 "></div>
             <div class="controls col-md-8 ">
                 <input type="submit" name="modifier_secteur" value="Modifier" class="btn btn-primary btn btn-info" id="submit-id-signup" />
+                <input type="submit" name="supprimer_secteur" value="Supprimer" class="btn btn-primary btn btn-danger confirm" id="submit-id-signup" />
             </div>
         </div>
 </form>
