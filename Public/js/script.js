@@ -5,7 +5,9 @@ $(document).ready(function(){
     var fileName = locationArr[locationArr.length-1];
 
     $( "input[type=radio]" ).on( "click", create );
+
     create();
+
 
 });
 
@@ -16,11 +18,11 @@ function create() {
     form_secteur();
 
     // If the checkbox is checked, display the output text
-    if (document.getElementById("check_entreprise").checked == true){
+    if (document.getElementById("check_entreprise").checked === true){
         $('#form_create').html(form_entreprise);
-    } else if(document.getElementById("check_association").checked == true) {
+    } else if(document.getElementById("check_association").checked === true) {
         $('#form_create').html(form_association);
-    } else if(document.getElementById("check_secteur").checked == true) {
+    } else if(document.getElementById("check_secteur").checked === true) {
         $('#form_create').html(form_secteur);
 
     }
@@ -56,7 +58,7 @@ function form_entreprise(){
         <div id="div_id_actionnaire" class="form-group required">
             <label for="div_id_actionnaire" class="control-label col-md-4  requiredField"> Actionnaire</label>
             <div class="controls col-md-8 ">
-                <input class="input-md textinput textInput form-control" id="div_id_actionnaire" name="actionnaire" placeholder="Nombre d'actionnaire" style="margin-bottom: 10px" type="text" />
+                <input class="input-md textinput textInput form-control" id="div_id_actionnaire" name="actionnaire" placeholder="Nombre d'actionnaire" style="margin-bottom: 10px" type="number" />
             </div>
         </div>
         <div class="form-group">
@@ -100,7 +102,7 @@ function form_association() {
         <div id="div_id_actionnaire" class="form-group required">
             <label for="div_id_actionnaire" class="control-label col-md-4  requiredField"> Donateur</label>
             <div class="controls col-md-8 ">
-                <input class="input-md textinput textInput form-control" id="div_id_actionnaire" name="donateur" placeholder="Nombre d'actionnaire" style="margin-bottom: 10px" type="text" />
+                <input class="input-md textinput textInput form-control" id="div_id_actionnaire" name="donateur" placeholder="Nombre d'actionnaire" style="margin-bottom: 10px" type="number" />
             </div>
         </div>
         <div class="form-group">

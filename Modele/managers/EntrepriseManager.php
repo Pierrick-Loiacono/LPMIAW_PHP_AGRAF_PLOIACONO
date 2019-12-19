@@ -77,5 +77,16 @@ class EntrepriseManager extends PDOManager
         return $res;
     }
 
+    public function insertStructure(Entity $e, int $idSecteur): PDOStatement
+    {
+        $req = "INSERT INTO secteurs_structures(id_secteur, id_structure) VALUES (:id_secteur, :id_structure)";
+        $params = [
+            "id_secteur" => $idSecteur,
+            "id_structure" => $e->getId()
+        ];
+        var_dump($params);
+        $res = $this->executePrepare($req, $params);
+        return $res;
+    }
 
 }

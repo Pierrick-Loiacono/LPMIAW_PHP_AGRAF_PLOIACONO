@@ -18,11 +18,27 @@
                         <div id="form_create">
 
                         </div>
+                        <label for="pet-select">Associer un ou plusieur secteur(s):</label>
+
+                        <select name="secteurs[]" id="selection-secteurs" multiple>
+                            <?php
+                            foreach ($secteurs as $secteur) {
+                                ?>
+                                <option value="<?php echo $secteur->getId()?>"><?php echo $secteur->getLibelle()?></option>
+                                <?php
+                            }
+                            ?>
+                        </select>
                     </form>
                 </form>
             </div>
         </div>
     </div>
+</div>
+<div class="col-md-4">
+
+
+
 </div>
 
 

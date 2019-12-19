@@ -30,6 +30,8 @@ try {
                     $c->viewListe();
                     break;
                 case "createStructure":
+                    $s = new SecteurController();
+                    $secteurs = $s->findAllSecteur();
                     require(__DIR__.'/Vue/creationStructure.php');
 
                     if(isset($_POST['enregistrer_entreprise'])) {
@@ -74,6 +76,8 @@ try {
                         $manager->delete($entity);
                         header("Location: index.php?action=viewListeEntre");
                     }else {
+                        $s = new SecteurController();
+                        $secteurs = $s->findAllSecteur();
                         require(__DIR__.'/Vue/editionStructure.php');
                     }
 
@@ -93,6 +97,8 @@ try {
                        $manager->delete($entity);
                        header("Location: index.php?action=viewListeAsso");
                     } else {
+                        $s = new SecteurController();
+                        $secteurs = $s->findAllSecteur();
                         require(__DIR__.'/Vue/editionStructure.php');
                     }
 

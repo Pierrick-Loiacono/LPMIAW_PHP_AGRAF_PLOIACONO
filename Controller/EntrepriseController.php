@@ -22,10 +22,17 @@ class EntrepriseController extends AdminController
         require(__DIR__ . '/../Vue/affichageListe.php');
     }
 
+
+
     public function addEntreprise(): void
     {
         $ent = new Entreprise(null, $_POST['nom'], $_POST['rue'], $_POST['postal'], $_POST['ville'], false, $_POST['actionnaire']);
-        $this->insert($ent);
+       // $this->insert($ent);
+        if (sizeof($_POST['secteurs']) > 0){
+            foreach ($_POST['secteurs'] as $s){
+                $this->manager->insertStructure($ent, intval($s));
+            }
+        }
         header("Location: index.php?action=viewListeEntre");
     }
 }

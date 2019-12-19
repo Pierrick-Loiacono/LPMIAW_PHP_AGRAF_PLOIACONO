@@ -9,7 +9,6 @@
 <head>
     <meta charset="utf-8">
     <title>Structure</title>
-
     <link rel="stylesheet" type="text/css" href="Public/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="Public/css/style.css">
 </head>

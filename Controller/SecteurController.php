@@ -22,6 +22,11 @@ class SecteurController extends AdminController
         require(__DIR__.'/../Vue/affichageListe.php');
     }
 
+    function findAllSecteur()
+    {
+        return $this->findAll();
+    }
+
     public function addSecteur(): void
     {
         $ent = new Secteur(null, $_POST['nom_asso']);
