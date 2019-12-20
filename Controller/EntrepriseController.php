@@ -32,7 +32,6 @@ class EntrepriseController extends AdminController
                 $this->manager->insertStructure(intval($lastId), intval($s));
             }
         }
-
         header("Location: index.php?action=viewListeEntre");
         exit();
     }

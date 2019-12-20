@@ -32,8 +32,6 @@ try {
                 case "createStructure":
                     $s = new SecteurController();
                     $secteurs = $s->findAllSecteur();
-                    require(__DIR__.'/Vue/creationStructure.php');
-
                     if(isset($_POST['enregistrer_entreprise'])) {
                         $controller = new EntrepriseController();
                         $controller->addEntreprise();
@@ -44,7 +42,7 @@ try {
                         $controller = new SecteurController();
                         $controller->addSecteur();
                     }
-
+                    require(__DIR__.'/Vue/creationStructure.php');
                     break;
                 case "editSecteur": // edition des Associations
                     $manager = new SecteurManager();
