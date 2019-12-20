@@ -21,6 +21,13 @@ class EntrepriseManager extends PDOManager
         return new Entreprise($entreprise["ID"], $entreprise["NOM"], $entreprise["RUE"],$entreprise["CP"],$entreprise["VILLE"],false,$entreprise["NB_ACTIONNAIRES"]);
     }
 
+
+    public function lastId(){
+        $stmt = $this->executePrepare("SELECT id FROM structure ORDER BY id DESC LIMIT 0, 1", []);
+        $idA = $stmt->fetch();
+        return $idA["id"];
+    }
+
     public function find(): PDOStatement
     {
         $stmt=$this->executePrepare("SELECT * FROM structure where ESTASSO = false",[]);
@@ -68,6 +75,7 @@ class EntrepriseManager extends PDOManager
     }
 
 
+
     public function delete(Entity $e): PDOStatement {
         $req = "DELETE from structure WHERE id = :id";
         $params = [
@@ -77,14 +85,13 @@ class EntrepriseManager extends PDOManager
         return $res;
     }
 
-    public function insertStructure(Entity $e, int $idSecteur): PDOStatement
+    public function insertStructure(int $idStructure, int $idSecteur): PDOStatement
     {
         $req = "INSERT INTO secteurs_structures(id_secteur, id_structure) VALUES (:id_secteur, :id_structure)";
         $params = [
             "id_secteur" => $idSecteur,
-            "id_structure" => $e->getId()
+            "id_structure" => $idStructure
         ];
-        var_dump($params);
         $res = $this->executePrepare($req, $params);
         return $res;
     }
