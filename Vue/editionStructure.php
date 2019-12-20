@@ -78,6 +78,9 @@
                             $compare = true;
                         }
                     }
+                } else {
+
+                }
                     if($compare == true){
                         ?>
                         <option selected="selected"
@@ -88,7 +91,6 @@
                         <option value="<?php echo $secteur->getId() ?>"><?php echo $secteur->getLibelle() ?></option>
                         <?php
                     }
-                }
             }
             ?>
         </select>
