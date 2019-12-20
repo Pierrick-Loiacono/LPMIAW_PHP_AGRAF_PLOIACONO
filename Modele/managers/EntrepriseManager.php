@@ -97,7 +97,7 @@ class EntrepriseManager extends PDOManager
         return $res;
     }
 
-    public function findStructureSecteur(int $idStructure)
+    public function findEntrepriseSecteur(int $idStructure)
     {
         $req="SELECT id_secteur FROM secteurs_structures WHERE id_structure = :id";
         $params = [

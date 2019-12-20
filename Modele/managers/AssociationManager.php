@@ -75,4 +75,14 @@ class AssociationManager extends PDOManager
         $res = $this->executePrepare($req, $params);
         return $res;
     }
+
+    public function findAssociationSecteur(int $idStructure)
+    {
+        $req="SELECT id_secteur FROM secteurs_structures WHERE id_structure = :id";
+        $params = [
+            "id"=> $idStructure,
+        ];
+        $res = $this->executePrepare($req,$params);
+        return $res->fetchAll();
+    }
 }

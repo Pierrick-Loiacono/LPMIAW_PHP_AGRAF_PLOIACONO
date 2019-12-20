@@ -79,7 +79,11 @@
                         }
                     }
                 } else {
-
+                    foreach ($associationSecteur as $assoSect) {
+                        if ($secteur->getId() == intval($assoSect['id_secteur'])) {
+                            $compare = true;
+                        }
+                    }
                 }
                     if($compare == true){
                         ?>
