@@ -13,18 +13,18 @@ require_once(__DIR__.'/../entities/Association.php');
 class AssociationManager extends PDOManager
 {
 
+    public function find(): PDOStatement
+    {
+        $stmt=$this->executePrepare("SELECT * FROM structure where ESTASSO = true",[]);
+        return $stmt;
+    }
+
     public function findById(int $id): ?Entity
     {
         $stmt = $this->executePrepare("SELECT * FROM structure WHERE id=:id", ["id" => $id]);
         $association = $stmt->fetch();
         if (!$association) return null;
         return new Association($association["ID"], $association["NOM"], $association["RUE"],$association["CP"],$association["VILLE"],true,$association["NB_DONATEURS"]);
-    }
-
-    public function find(): PDOStatement
-    {
-        $stmt=$this->executePrepare("SELECT * FROM structure where ESTASSO = true",[]);
-        return $stmt;
     }
 
     public function findAll(int $pdoFecthMode): array
@@ -76,13 +76,4 @@ class AssociationManager extends PDOManager
         return $res;
     }
 
-    public function findAssociationSecteur(int $idStructure)
-    {
-        $req="SELECT id_secteur FROM secteurs_structures WHERE id_structure = :id";
-        $params = [
-            "id"=> $idStructure,
-        ];
-        $res = $this->executePrepare($req,$params);
-        return $res->fetchAll();
-    }
 }

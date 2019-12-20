@@ -132,6 +132,23 @@ abstract class PDOManager
         return $conn;
     }
 
+    public function lastId(){
+        $stmt = $this->executePrepare("SELECT id FROM structure ORDER BY id DESC LIMIT 0, 1", []);
+        $idA = $stmt->fetch();
+        return $idA["id"];
+    }
+
+    // Retourne les secteurs associés  une structure
+    public function findStructureSecteur(int $idStructure)
+    {
+        $req="SELECT id_secteur FROM secteurs_structures WHERE id_structure = :id";
+        $params = [
+            "id"=> $idStructure,
+        ];
+        $res = $this->executePrepare($req,$params);
+        return $res->fetchAll();
+    }
+
     protected function executePrepare(string $req, array $params) : PDOStatement {
         $conn = null;
         try {
