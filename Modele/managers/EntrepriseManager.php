@@ -74,7 +74,7 @@ class EntrepriseManager extends PDOManager
         return $res;
     }
 
-    
+
 
     // Supprime une entreprise dans la base de donnée
     public function delete(Entity $e): PDOStatement {

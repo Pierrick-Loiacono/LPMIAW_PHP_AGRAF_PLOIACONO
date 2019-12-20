@@ -67,8 +67,7 @@
     <div class="col-md-4">
 
         <label for="pet-select">Associer un ou plusieur secteur(s):</label>
-
-        <select name="secteurs" id="selection-secteurs" multiple>
+        <select name="secteurs" id="selection-secteurs" style="width: 20rem;" multiple>
             <?php
             foreach ($secteurs as $secteur) {
                 $compare = false;

@@ -11,6 +11,7 @@
     <title>Structure</title>
     <link rel="stylesheet" type="text/css" href="Public/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="Public/css/style.css">
+    <link rel="stylesheet" type="text/css" href="Public/css/select2.min.css">
 </head>
 
 <header>

@@ -5,6 +5,7 @@ $(document).ready(function(){
     var fileName = locationArr[locationArr.length-1];
 
     $( "input[type=radio]" ).on( "click", create );
+    $('#selection-secteurs').select2();
 
     create();
 
