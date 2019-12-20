@@ -76,6 +76,7 @@ try {
                     }else {
                         $s = new SecteurController();
                         $secteurs = $s->findAllSecteur();
+                        $entrepriseSecteur = $manager->findStructureSecteur(intval($_GET['id']));
                         require(__DIR__.'/Vue/editionStructure.php');
                     }
 

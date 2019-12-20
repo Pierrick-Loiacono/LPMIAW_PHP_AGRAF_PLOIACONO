@@ -97,15 +97,14 @@ class EntrepriseManager extends PDOManager
         return $res;
     }
 
-    public function findStructureSecteur(int $idStructure): PDOStatement
+    public function findStructureSecteur(int $idStructure)
     {
-        $req="SELECT * FROM secteurs_structures WHERE id = :id";
+        $req="SELECT id_secteur FROM secteurs_structures WHERE id_structure = :id";
         $params = [
             "id"=> $idStructure,
         ];
         $res = $this->executePrepare($req,$params);
-        $secteurs = $res->fetchAll();
-        return $res;
+        return $res->fetchAll();
     }
 
 

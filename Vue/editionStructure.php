@@ -71,10 +71,25 @@
         <select name="secteurs" id="selection-secteurs" multiple>
             <?php
             foreach ($secteurs as $secteur) {
-            ?>
-            <option value="<?php echo $secteur->getId()?>"><?php echo $secteur->getLibelle()?></option>
-            <?php
+                $compare = false;
+                if ($entity->isEstAsso() == false) {
+                    foreach ($entrepriseSecteur as $entSect) {
+                        if ($secteur->getId() == intval($entSect['id_secteur'])) {
+                            $compare = true;
+                        }
+                    }
+                    if($compare == true){
+                        ?>
+                        <option selected="selected"
+                                value="<?php echo $secteur->getId() ?>"><?php echo $secteur->getLibelle() ?></option>
+                        <?php
+                    } else {
+                        ?>
+                        <option value="<?php echo $secteur->getId() ?>"><?php echo $secteur->getLibelle() ?></option>
+                        <?php
+                    }
                 }
+            }
             ?>
         </select>
 
