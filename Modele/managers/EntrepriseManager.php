@@ -81,6 +81,7 @@ class EntrepriseManager extends PDOManager
         $params = [
             "id"=> $e->getId()
         ];
+        $this->deleteSecteurInStructure($e);
         $res = $this->executePrepare($req, $params);
         return $res;
     }
@@ -96,4 +97,24 @@ class EntrepriseManager extends PDOManager
         return $res;
     }
 
+    public function findStructureSecteur(int $idStructure): PDOStatement
+    {
+        $req="SELECT * FROM secteurs_structures WHERE id = :id";
+        $params = [
+            "id"=> $idStructure,
+        ];
+        $res = $this->executePrepare($req,$params);
+        $secteurs = $res->fetchAll();
+        return $res;
+    }
+
+
+    public function deleteSecteurInStructure(Entity $e): PDOStatement {
+        $req = "DELETE from secteurs_structures WHERE id_structure = :idStructure";
+        $params = [
+            "idStructure"=> $e->getId()
+        ];
+        $res = $this->executePrepare($req, $params);
+        return $res;
+    }
 }
