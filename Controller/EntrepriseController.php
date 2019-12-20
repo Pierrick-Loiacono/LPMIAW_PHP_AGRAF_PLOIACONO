@@ -33,6 +33,20 @@ class EntrepriseController extends AdminController
             }
         }
         header("Location: index.php?action=viewListeEntre");
+    }
+
+    public function updateEntreprise(Entity $e): void
+    {
+        $this->manager->update($e);
+        $this->manager->deleteSecteurInStructure($e);
+        if (sizeof($_POST['secteurs']) > 0){
+            foreach ($_POST['secteurs'] as $s){
+                $this->manager->insertStructure($e->getId(), intval($s));
+            }
+        }
+        header("Location: index.php?action=viewListeEntre");
         exit();
     }
+
+
 }

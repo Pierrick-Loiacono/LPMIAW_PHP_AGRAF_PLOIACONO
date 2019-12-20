@@ -101,7 +101,7 @@ class EntrepriseManager extends PDOManager
 
 
 
-    // Supprimer l'association entre un entreprise et ses secteurs (utilisé lors de la supprission d'une entreprise)
+    // Supprimer l'association entre une entreprise et ses secteurs (utilisé lors de la suppression d'une entreprise)
     public function deleteSecteurInStructure(Entity $e): PDOStatement {
         $req = "DELETE from secteurs_structures WHERE id_structure = :idStructure";
         $params = [
@@ -109,5 +109,14 @@ class EntrepriseManager extends PDOManager
         ];
         $res = $this->executePrepare($req, $params);
         return $res;
+    }
+
+    public function updateSecteurInStructure(Entity $e){
+        $this->deleteSecteurInStructure($e);
+        if (sizeof($_POST['secteurs']) > 0){
+            foreach ($_POST['secteurs'] as $s){
+                $this->insertStructure($e->getId(), intval($s));
+            }
+        }
     }
 }

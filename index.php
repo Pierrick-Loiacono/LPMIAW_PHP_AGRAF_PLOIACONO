@@ -68,7 +68,8 @@ try {
                         $entity->setCodePostal($_POST['postal_entity']);
                         $entity->setVille($_POST['ville_entity']);
                         $entity->setActionnaires(intval($_POST['actionnaire_entreprise']));
-                        $manager->update($entity);
+                        $c = new EntrepriseController();
+                        $c->updateEntreprise($entity);
                         header("Location: index.php?action=viewListeEntre");
                     } elseif (isset($_POST['supprimer_entity'])) {
                         $manager->delete($entity);

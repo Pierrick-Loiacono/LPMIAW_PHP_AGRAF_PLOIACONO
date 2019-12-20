@@ -18,8 +18,8 @@
                         <div id="form_create">
 
                         </div>
-                        <label for="pet-select">Associer un ou plusieur secteur(s):</label>
 
+                        <label for="pet-select">Associer un ou plusieur secteur(s):</label>
                         <select name="secteurs[]" id="selection-secteurs" multiple>
                             <?php
                             foreach ($secteurs as $secteur) {

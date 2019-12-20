@@ -62,28 +62,27 @@
                 <input type="submit" name="supprimer_entity" value="Supprimer" class="btn btn-primary btn btn-danger confirm" id="delete" />
             </div>
         </div>
-    </form>
 
-    <div class="col-md-4">
+        <div class="col-md-4">
 
-        <label for="pet-select">Associer un ou plusieur secteur(s):</label>
-        <select name="secteurs" id="selection-secteurs" style="width: 20rem;" multiple>
-            <?php
-            foreach ($secteurs as $secteur) {
-                $compare = false;
-                if ($entity->isEstAsso() == false) {
-                    foreach ($entrepriseSecteur as $entSect) {
-                        if ($secteur->getId() == intval($entSect['id_secteur'])) {
-                            $compare = true;
+            <label for="pet-select">Associer un ou plusieur secteur(s):</label>
+            <select name="secteurs" id="selection-secteurs" style="width: 20rem;" multiple>
+                <?php
+                foreach ($secteurs as $secteur) {
+                    $compare = false;
+                    if ($entity->isEstAsso() == false) {
+                        foreach ($entrepriseSecteur as $entSect) {
+                            if ($secteur->getId() == intval($entSect['id_secteur'])) {
+                                $compare = true;
+                            }
+                        }
+                    } else {
+                        foreach ($associationSecteur as $assoSect) {
+                            if ($secteur->getId() == intval($assoSect['id_secteur'])) {
+                                $compare = true;
+                            }
                         }
                     }
-                } else {
-                    foreach ($associationSecteur as $assoSect) {
-                        if ($secteur->getId() == intval($assoSect['id_secteur'])) {
-                            $compare = true;
-                        }
-                    }
-                }
                     if($compare == true){
                         ?>
                         <option selected="selected"
@@ -94,11 +93,14 @@
                         <option value="<?php echo $secteur->getId() ?>"><?php echo $secteur->getLibelle() ?></option>
                         <?php
                     }
-            }
-            ?>
-        </select>
+                }
+                ?>
+            </select>
 
-    </div>
+        </div>
+    </form>
+
+
 
 
 
