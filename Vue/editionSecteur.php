@@ -1,7 +1,3 @@
-<?php
-    include('includes/header.php');
-?>
-
 <form method="post">
         <div id="div_id_name" class="form-group required">
             <label for="id_name" class="control-label col-md-4  requiredField">Nom<span class="asteriskField">*</span> </label>
@@ -18,10 +14,3 @@
             </div>
         </div>
 </form>
-
-
-
-<?php
-include('includes/footer.php');
-?>
-

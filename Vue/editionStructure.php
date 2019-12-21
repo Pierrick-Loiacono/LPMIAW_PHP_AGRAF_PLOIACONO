@@ -1,7 +1,3 @@
-<?php
-    include('includes/header.php');
-
-    ?>
     <form method="post">
         <div id="div_id_name" class="form-group required">
             <label for="id_name" class="control-label col-md-4  requiredField">Nom<span class="asteriskField">*</span> </label>
@@ -31,8 +27,9 @@
                        placeholder="ville" style="margin-bottom: 10px" type="text" value="<?php echo $entity->getVille()?>"/>
             </div>
         </div>
-<?php if ($entity->isEstAsso() == false){
-    ?>
+        <?php
+        if ($entity->isEstAsso() == false){
+         ?>
         <div id="div_id_actionnaire" class="form-group required">
             <label for="div_id_actionnaire" class="control-label col-md-4  requiredField"> Actionnaire</label>
             <div class="controls col-md-4 ">
@@ -40,9 +37,9 @@
                        placeholder="Nombre d'actionnaire" style="margin-bottom: 10px" type="number" value="<?php echo $entity->getActionnaires()?>"/>
             </div>
         </div>
-    <?php
+        <?php
         }else {
-    ?>
+        ?>
         <div id="div_id_donateur" class="form-group required">
             <label for="div_id_donateur" class="control-label col-md-4  requiredField"> Donnateurs</label>
             <div class="controls col-md-4 ">
@@ -55,18 +52,10 @@
     <?php
         }
      ?>
-        <div class="form-group">
-            <div class="aab controls col-md-4 "></div>
-            <div class="controls col-md-4 ">
-                <input type="submit" name="modifier_entity" value="Modifier" class="btn btn-primary btn btn-info" id="submit-id-signup" />
-                <input type="submit" name="supprimer_entity" value="Supprimer" class="btn btn-primary btn btn-danger confirm" id="delete" />
-            </div>
-        </div>
 
         <div class="col-md-4">
-
             <label for="pet-select">Associer un ou plusieur secteur(s):</label>
-            <select name="secteurs" id="selection-secteurs" style="width: 20rem;" multiple>
+            <select name="secteurs[]" id="selection-secteurs" style="width: 20rem;" multiple>
                 <?php
                 foreach ($secteurs as $secteur) {
                     $compare = false;
@@ -96,15 +85,13 @@
                 }
                 ?>
             </select>
+        </div>
 
+        <div class="form-group">
+            <div class="aab controls col-md-4 "></div>
+            <div class="controls col-md-4 ">
+                <input type="submit" name="modifier_entity" value="Modifier" class="btn btn-primary btn btn-info" id="submit-id-signup" />
+                <input type="submit" name="supprimer_entity" value="Supprimer" class="btn btn-primary btn btn-danger confirm" id="delete" />
+            </div>
         </div>
     </form>
-
-
-
-
-
-
-<?php
-    include('includes/footer.php');
-?>

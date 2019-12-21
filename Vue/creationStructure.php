@@ -1,6 +1,3 @@
-<?php
-    include('includes/header.php');
-?>
 <div class="container">
     <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
         <div class="panel panel-info">
@@ -19,8 +16,10 @@
 
                         </div>
 
+                        <div class="hide">
+
                         <label for="pet-select">Associer un ou plusieur secteur(s):</label>
-                        <select name="secteurs[]" id="selection-secteurs" multiple>
+                        <select  name="secteurs[]" id="selection-secteurs" multiple>
                             <?php
                             foreach ($secteurs as $secteur) {
                                 ?>
@@ -29,6 +28,7 @@
                             }
                             ?>
                         </select>
+                        </div>
                     </form>
                 </form>
             </div>
@@ -40,11 +40,6 @@
 
 
 </div>
-
-
-<?php
-include('includes/footer.php');
-?>
 
 
 

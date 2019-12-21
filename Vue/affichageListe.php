@@ -1,8 +1,3 @@
-<?php
-    include('includes/header.php');
-    global $bdd;
-?>
-
     <?php
         if (strcmp($_GET["action"], "viewListeAsso") == 0) {
     ?>
@@ -93,5 +88,3 @@
     <?php
         }
     ?>
-<?php
-    include('includes/footer.php');

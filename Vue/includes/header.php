@@ -1,6 +1,13 @@
 <?php
     include('connexion.php');
     global $bdd;
+    session_start();
+
+    if (isset($_POST['secteurs'])){
+        $_SESSION['secteurs'] = $_POST['secteurs'];
+    }
+
+//    var_dump($_SESSION['secteurs']);
 
 ?>
 

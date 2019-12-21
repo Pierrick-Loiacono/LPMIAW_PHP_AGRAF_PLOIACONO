@@ -8,6 +8,7 @@ use \PDO;
 use \PDOStatement;
 use \PDOException;
 use POO\Entity\Entity;
+use POO\Entity\Secteur;
 
 abstract class PDOManager
 {
@@ -132,10 +133,11 @@ abstract class PDOManager
         return $conn;
     }
 
+    // Retourne le dernier ID ajouté à la base de données
     public function lastId(){
         $stmt = $this->executePrepare("SELECT id FROM structure ORDER BY id DESC LIMIT 0, 1", []);
         $idA = $stmt->fetch();
-        return $idA["id"];
+        return intval($idA["id"]);
     }
 
     // Retourne les secteurs associés  une structure
@@ -147,6 +149,43 @@ abstract class PDOManager
         ];
         $res = $this->executePrepare($req,$params);
         return $res->fetchAll();
+    }
+
+    // Permet d'associer une entreprise à des secteurs
+    public function insertStructure(int $idStructure, int $idSecteur): PDOStatement
+    {
+        $req = "INSERT INTO secteurs_structures(id_secteur, id_structure) VALUES (:id_secteur, :id_structure)";
+        $params = [
+            "id_secteur" => $idSecteur,
+            "id_structure" => $idStructure
+        ];
+        $res = $this->executePrepare($req, $params);
+        return $res;
+    }
+
+    public function updateSecteurInStructure(Entity $e){
+        $this->deleteSecteurInStructure($e);
+        if (sizeof($_SESSION['secteurs']) > 0){
+            foreach ($_SESSION['secteurs'] as $s){
+                $this->insertStructure($e->getId(), intval($s));
+            }
+        }
+    }
+
+    public function deleteSecteurInStructure(Entity $e): PDOStatement {
+        if($e instanceof Secteur){
+            $req = "DELETE from secteurs_structures WHERE id_secteur = :idSecteur";
+            $params = [
+                "idSecteur"=> $e->getId()
+            ];
+        } else {
+            $req = "DELETE from secteurs_structures WHERE id_structure = :idStructure";
+            $params = [
+                "idStructure"=> $e->getId()
+            ];
+        }
+        $res = $this->executePrepare($req, $params);
+        return $res;
     }
 
     protected function executePrepare(string $req, array $params) : PDOStatement {
@@ -172,6 +211,8 @@ abstract class PDOManager
 
     public abstract function findById(int $id) : ?Entity;
     public abstract function find() : PDOStatement;
-    public abstract function findAll(int $pdoFecthMode) : array;
+    public abstract function findAll() : array;
     public abstract function insert(Entity $e) : PDOStatement;
+    public abstract function delete(Entity $e) : PDOStatement;
+    public abstract function update(Entity $e) : PDOStatement;
 }

@@ -8,7 +8,7 @@ use POO\Entity\Entreprise;
 require_once('PDOManager.php');
 
 require_once(__DIR__.'/../../Vue/includes/connexion.php');
-require_once (__DIR__.'/../entities/Entreprise.php');
+require_once(__DIR__.'/../entities/Entreprise.php');
 
 class EntrepriseManager extends PDOManager
 {
@@ -30,11 +30,11 @@ class EntrepriseManager extends PDOManager
     }
 
     // Retourne, sous forme d'objet, chaque entreprise
-    public function findAll(int $pdoFecthMode): array
+    public function findAll(): array
     {
         // fonction qui retourne toutes les entreprises
         $stmt=$this->find();
-        $entreprises = $stmt->fetchAll($pdoFecthMode);
+        $entreprises = $stmt->fetchAll();
 
         $entreprisesEntities=[];
         foreach($entreprises as $entreprise) {
@@ -44,8 +44,6 @@ class EntrepriseManager extends PDOManager
         return $entreprisesEntities;
     }
 
-
-
     // Insère une entreprise dans la base de données
     public function insert(Entity $e): PDOStatement
     {
@@ -53,6 +51,11 @@ class EntrepriseManager extends PDOManager
                             VALUES (:nom, :rue, :cp, :ville, :nbActionnaires, false, null)";
         $params = array("nom" => $e->getNom(), "rue" => $e->getRue(), "cp" => $e->getCodePostal(), "ville" => $e->getVille(), "nbActionnaires"=>$e->getActionnaires());
         $res = $this->executePrepare($req, $params);
+        if (sizeof($_SESSION['secteurs']) > 0){
+            foreach ($_SESSION['secteurs'] as $s){
+                $this->insertStructure($this->lastId(), intval($s));
+            }
+        }
         return $res;
     }
 
@@ -60,7 +63,6 @@ class EntrepriseManager extends PDOManager
     public function update(Entity $e): PDOStatement
     {
         $req = "UPDATE structure SET nom=:nom, rue=:rue, cp=:cp, ville=:ville, nb_actionnaires=:nb_actionnaires WHERE id = :id";
-
         $params = [
             "nom" => $e->getNom(),
             "rue" => $e->getRue(),
@@ -69,15 +71,13 @@ class EntrepriseManager extends PDOManager
             "nb_actionnaires" => $e->getActionnaires(),
             "id"=> $e->getId()
         ];
-
         $res = $this->executePrepare($req, $params);
         return $res;
     }
 
-
-
     // Supprime une entreprise dans la base de donnée
-    public function delete(Entity $e): PDOStatement {
+    public function delete(Entity $e): PDOStatement
+    {
         $req = "DELETE from structure WHERE id = :id";
         $params = [
             "id"=> $e->getId()
@@ -87,36 +87,4 @@ class EntrepriseManager extends PDOManager
         return $res;
     }
 
-    // Permet d'associer une entreprise à des secteurs
-    public function insertStructure(int $idStructure, int $idSecteur): PDOStatement
-    {
-        $req = "INSERT INTO secteurs_structures(id_secteur, id_structure) VALUES (:id_secteur, :id_structure)";
-        $params = [
-            "id_secteur" => $idSecteur,
-            "id_structure" => $idStructure
-        ];
-        $res = $this->executePrepare($req, $params);
-        return $res;
-    }
-
-
-
-    // Supprimer l'association entre une entreprise et ses secteurs (utilisé lors de la suppression d'une entreprise)
-    public function deleteSecteurInStructure(Entity $e): PDOStatement {
-        $req = "DELETE from secteurs_structures WHERE id_structure = :idStructure";
-        $params = [
-            "idStructure"=> $e->getId()
-        ];
-        $res = $this->executePrepare($req, $params);
-        return $res;
-    }
-
-    public function updateSecteurInStructure(Entity $e){
-        $this->deleteSecteurInStructure($e);
-        if (sizeof($_POST['secteurs']) > 0){
-            foreach ($_POST['secteurs'] as $s){
-                $this->insertStructure($e->getId(), intval($s));
-            }
-        }
-    }
 }

@@ -18,35 +18,26 @@ class EntrepriseController extends AdminController
 
     function viewListe()
     {
-        $entrepriseListe = $this->findAll();
+        $entrepriseListe = $this->manager->findAll();
         require(__DIR__ . '/../Vue/affichageListe.php');
     }
 
     public function addEntreprise(): void
     {
         $ent = new Entreprise(null, $_POST['nom'], $_POST['rue'], $_POST['postal'], $_POST['ville'], false, $_POST['actionnaire']);
-        $this->insert($ent);
-        $lastId = $this->manager->lastId();
-        if (sizeof($_POST['secteurs']) > 0){
-            foreach ($_POST['secteurs'] as $s){
-                $this->manager->insertStructure(intval($lastId), intval($s));
-            }
-        }
+        $this->manager->insert($ent);
         header("Location: index.php?action=viewListeEntre");
     }
 
-    public function updateEntreprise(Entity $e): void
+    public function updateEntreprise(Entity $e)
     {
         $this->manager->update($e);
-        $this->manager->deleteSecteurInStructure($e);
-        if (sizeof($_POST['secteurs']) > 0){
-            foreach ($_POST['secteurs'] as $s){
-                $this->manager->insertStructure($e->getId(), intval($s));
-            }
-        }
-        header("Location: index.php?action=viewListeEntre");
-        exit();
+        $this->manager->updateSecteurInStructure($e);
     }
 
+    public function deleteEntreprise(Entity $e)
+    {
+        $this->manager->delete($e);
+    }
 
 }

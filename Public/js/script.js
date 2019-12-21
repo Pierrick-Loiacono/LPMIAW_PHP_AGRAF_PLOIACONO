@@ -69,6 +69,7 @@ function form_entreprise(){
             </div>
         </div>
     `;
+    $(".hide").show();
 
     return form_entre;
 }
@@ -113,6 +114,7 @@ function form_association() {
             </div>
         </div>
     `;
+    $(".hide").show();
 
     return form_asso;
 }
@@ -122,7 +124,7 @@ function form_secteur() {
         <div id="div_id_name" class="form-group required">
             <label for="id_name" class="control-label col-md-4  requiredField">Nom<span class="asteriskField">*</span> </label>
             <div class="controls col-md-8 ">
-                <input class="input-md  textinput textInput form-control" id="id_name_secteur" maxlength="30" required name="nom_asso" placeholder="Nom du secteur" style="margin-bottom: 10px" type="text" />
+                <input class="input-md  textinput textInput form-control" id="id_name_secteur" maxlength="30" required name="nom_secteur" placeholder="Nom du secteur" style="margin-bottom: 10px" type="text" />
             </div>
         </div>
         <div class="form-group">
@@ -133,6 +135,7 @@ function form_secteur() {
         </div>
     `;
 
+    $(".hide").hide();
     return form_sect;
 }
 

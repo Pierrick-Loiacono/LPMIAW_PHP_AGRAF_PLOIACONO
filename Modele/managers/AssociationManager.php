@@ -27,11 +27,11 @@ class AssociationManager extends PDOManager
         return new Association($association["ID"], $association["NOM"], $association["RUE"],$association["CP"],$association["VILLE"],true,$association["NB_DONATEURS"]);
     }
 
-    public function findAll(int $pdoFecthMode): array
+    public function findAll(): array
     {
         // fonction qui retourne toutes les associations
         $stmt=$this->find();
-        $associations = $stmt->fetchAll($pdoFecthMode);
+        $associations = $stmt->fetchAll();
 
         $associationsEntities=[];
         foreach($associations as $association) {
@@ -47,13 +47,18 @@ class AssociationManager extends PDOManager
                             VALUES (:nom, :rue, :cp, :ville, null, true, :nbDonateurs)";
         $params = array("nom" => $e->getNom(), "rue" => $e->getRue(), "cp" => $e->getCodePostal(), "ville" => $e->getVille(), "nbDonateurs"=>$e->getDonateurs());
         $res=$this->executePrepare($req, $params);
+        if (sizeof($_SESSION['secteurs']) > 0){
+            foreach ($_SESSION['secteurs'] as $s){
+                $this->insertStructure($this->lastId(), intval($s));
+            }
+        }
         return $res;
     }
 
+    // Met à jour une ligne dans la base de donnée correspondant à l'association passé en paramètre
     public function update(Entity $e): PDOStatement
     {
         $req = "UPDATE structure SET nom=:nom, rue=:rue, cp=:cp, ville=:ville, nb_donateurs=:nb_donateurs WHERE id = :id";
-
         $params = [
             "nom" => $e->getNom(),
             "rue" => $e->getRue(),
@@ -63,15 +68,17 @@ class AssociationManager extends PDOManager
             "id"=> $e->getId()
         ];
         $res = $this->executePrepare($req, $params);
-
         return $res;
     }
 
-    public function delete(Entity $e): PDOStatement {
+    // Supprime une association dans la base de donnée
+    public function delete(Entity $e): PDOStatement
+    {
         $req = "DELETE from structure WHERE id = :id";
         $params = [
             "id"=> $e->getId()
         ];
+        $this->deleteSecteurInStructure($e);
         $res = $this->executePrepare($req, $params);
         return $res;
     }
