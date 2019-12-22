@@ -7,7 +7,6 @@ require_once('Controller/AssociationController.php');
 require_once('Controller/EntrepriseController.php');
 require_once('Controller/SecteurController.php');
 include('Vue/includes/header.php');
-
 use POO\Modele\managers\AssociationManager;
 use POO\Modele\managers\EntrepriseManager;
 use POO\Modele\managers\SecteurManager;
@@ -46,10 +45,11 @@ try {
                     if (isset($_POST['modifier_secteur'])){
                         $secteur->setLibelle($_POST['nom_secteur']);
                         $secteurCtrl->updateSecteur($secteur);
+                        $_SESSION['MSG_OK'] = 'Le secteur a été modifié !';
                         header("Location: index.php?action=viewListeSect");
-
                     } elseif (isset($_POST['supprimer_secteur'])) {
                         $secteurCtrl->deleteSecteur($secteur);
+                        $_SESSION['MSG_SUPP'] = 'Le secteur a été supprimé !';
                         header("Location: index.php?action=viewListeSect");
                     }else {
                         require(__DIR__ . '/Vue/secteur/editionSecteur.php');
@@ -64,9 +64,11 @@ try {
                         $entity->setVille($_POST['ville_entity']);
                         $entity->setActionnaires(intval($_POST['actionnaire_entreprise']));
                         $entrepriseCtrl->updateEntreprise($entity);
+                        $_SESSION['MSG_OK'] = 'L\'entreprise a été modifiée !';
                         header("Location: index.php?action=viewListeEntre");
                     } elseif (isset($_POST['supprimer_entity'])) {
                         $entrepriseCtrl->deleteEntreprise($entity);
+                        $_SESSION['MSG_SUPP'] = 'L\'entreprise a été supprimé !';
                         header("Location: index.php?action=viewListeEntre");
                     }else {
                         $secteurs = $secteurCtrl->findAllSecteur();
@@ -83,10 +85,12 @@ try {
                         $entity->setVille($_POST['ville_entity']);
                         $entity->setDonateurs(intval($_POST['donateur_association']));
                         $associationCtrl->updateAssociation($entity);
+                        $_SESSION['MSG_OK'] = 'L\'association a été modifiée !';
                         header("Location: index.php?action=viewListeAsso");
                     } elseif (isset($_POST['supprimer_entity'])) {
                         $associationCtrl->deleteAssociation($entity);
-                       header("Location: index.php?action=viewListeAsso");
+                        $_SESSION['MSG_SUPP'] = 'L\'association a été supprimé !';
+                        header("Location: index.php?action=viewListeAsso");
                     } else {
                         $secteurs = $secteurCtrl->findAllSecteur();
                         $associationSecteur = $associationCtrl->getManager()->findStructureSecteur(intval($_GET['id']));
@@ -95,11 +99,11 @@ try {
 
                     break;
                 default: // Accueil
-                    require(__DIR__.'/Vue/accueil.php');
+                    header("Location: index.php?action=viewListeEntre");
                     break;
             }
         } else {
-            require(__DIR__.'/Vue/accueil.php');
+            header("Location: index.php?action=viewListeEntre");
         }
 
     } catch (Exception $ex) {

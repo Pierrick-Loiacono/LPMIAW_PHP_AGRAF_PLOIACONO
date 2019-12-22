@@ -29,9 +29,14 @@ class SecteurController extends AdminController
 
     public function addSecteur(): void
     {
-        $ent = new Secteur(null, $_POST['nom_secteur']);
-        $this->manager->insert($ent);
-        header("Location: index.php?action=viewListeSect");
+        try{
+            $ent = new Secteur(null, $_POST['nom_secteur']);
+            $this->manager->insert($ent);
+            $_SESSION['MSG_OK'] = 'Le secteur a été créé !';
+            header("Location: index.php?action=viewListeSect");
+        } catch(\Exception $ex) {
+            retourMsgErreurCreation($ex);
+        }
     }
 
     public function deleteSecteur(Entity $e)

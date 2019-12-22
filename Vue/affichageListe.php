@@ -4,7 +4,6 @@
     <table class="table table-striped table-hover">
         <thead>
             <tr>
-                <th scope="col">ID</th>
                 <th scope="col">Nom</th>
                 <th scope="col">Rue</th>
                 <th scope="col">Code Postal</th>
@@ -19,7 +18,6 @@
 
         ?>
             <tr class = "clickable-row" data-href="index.php?action=editAsso&id=<?php echo $asso->getId()?>">
-                <td><?php echo $asso->getId()?></td>
                 <td><?php echo $asso->getNom()?></td>
                 <td><?php echo $asso->getRue()?></td>
                 <td><?php echo $asso->getCodePostal()?></td>
@@ -37,7 +35,6 @@
             <table class="table table-striped table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">ID</th>
                     <th scope="col">Nom</th>
                     <th scope="col">RUE</th>
                     <th scope="col">Code Postal</th>
@@ -50,7 +47,6 @@
                 foreach ($entrepriseListe as $ent) {
                     ?>
                     <tr class = "clickable-row" data-href="index.php?action=editEntreprise&id=<?php echo $ent->getId()?>">
-                        <td><?php echo $ent->getId()?></td>
                         <td><?php echo $ent->getNom()?></td>
                         <td><?php echo $ent->getRue()?></td>
                         <td><?php echo $ent->getCodePostal()?></td>
@@ -68,7 +64,6 @@
             <table class="table table-striped table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">ID</th>
                     <th scope="col">Libelle</th>
                 </tr>
                 </thead>
@@ -77,7 +72,6 @@
                 foreach ($secteurListe as $sect) {
                     ?>
                     <tr class = "clickable-row" data-href="index.php?action=editSecteur&id=<?php echo $sect->getId()?>">
-                        <td><?php echo $sect->getId()?></td>
                         <td><?php echo $sect->getLibelle()?></td>
                     </tr>
                     <?php

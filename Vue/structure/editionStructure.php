@@ -17,7 +17,7 @@
             <label for="id_postal" class="control-label col-md-4  requiredField"> Code Postal<span class="asteriskField">*</span> </label>
             <div class="controls col-md-4 ">
                 <input class="input-md textinput textInput form-control" id="id_postal" required name="postal_entity"
-                       placeholder="Code Postal" style="margin-bottom: 10px" type="text" value="<?php echo $entity->getCodePostal()?>"/>
+                       placeholder="Code Postal" style="margin-bottom: 10px" type="number" value="<?php echo $entity->getCodePostal()?>" min="1000" max="98890"/>
             </div>
         </div>
         <div id="div_id_ville" class="form-group required">
@@ -34,7 +34,7 @@
             <label for="div_id_actionnaire" class="control-label col-md-4  requiredField"> Actionnaire</label>
             <div class="controls col-md-4 ">
                 <input class="input-md textinput textInput form-control" id="div_id_actionnaire" name="actionnaire_entreprise"
-                       placeholder="Nombre d'actionnaire" style="margin-bottom: 10px" type="number" value="<?php echo $entity->getActionnaires()?>"/>
+                       placeholder="Nombre d'actionnaire" style="margin-bottom: 10px" type="number" value="<?php echo $entity->getActionnaires()?>" min="0"/>
             </div>
         </div>
         <?php
@@ -46,7 +46,7 @@
                 <input class="input-md textinput textInput form-control" id="div_id_donateur"
                        name="donateur_association"
                        placeholder="Nombre de donateur" style="margin-bottom: 10px" type="number"
-                       value="<?php echo $entity->getDonateurs() ?>"/>
+                       value="<?php echo $entity->getDonateurs() ?>" min="0"/>
             </div>
         </div>
     <?php

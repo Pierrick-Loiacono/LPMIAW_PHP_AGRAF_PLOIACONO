@@ -40,7 +40,7 @@ function form_entreprise(){
         <div id="div_id_postal" class="form-group required">
             <label for="id_postal" class="control-label requiredField"> Code Postal<span class="asteriskField">*</span> </label>
             <div class="controls">
-                <input class="input-md textinput textInput form-control" id="id_postal" required name="postal" placeholder="Code Postal" style="margin-bottom: 10px" type="text" />
+                <input class="input-md textinput textInput form-control" id="id_postal" required name="postal" placeholder="Code Postal" style="margin-bottom: 10px" type="number" min="1000" max="98890" />
             </div>
         </div>
         <div id="div_id_ville" class="form-group required">
@@ -52,7 +52,7 @@ function form_entreprise(){
         <div id="div_id_actionnaire" class="form-group required">
             <label for="div_id_actionnaire" class="control-label requiredField"> Actionnaire</label>
             <div class="controls">
-                <input class="input-md textinput textInput form-control" id="div_id_actionnaire" name="actionnaire" placeholder="Nombre d'actionnaire" style="margin-bottom: 10px" type="number" />
+                <input class="input-md textinput textInput form-control" id="div_id_actionnaire" name="actionnaire" placeholder="Nombre d'actionnaire" style="margin-bottom: 10px" type="number" value="0" min="0"/>
             </div>
         </div>
         <div class="form-group">
@@ -85,7 +85,7 @@ function form_association() {
         <div id="div_id_postal" class="form-group required">
             <label for="id_postal" class="control-label requiredField"> Code Postal<span class="asteriskField">*</span> </label>
             <div class="controls">
-                <input class="input-md textinput textInput form-control" id="id_postal_asso" required name="postal_asso" placeholder="Code Postal" style="margin-bottom: 10px" type="text" />
+                <input class="input-md textinput textInput form-control" id="id_postal_asso" required name="postal_asso" placeholder="Code Postal" style="margin-bottom: 10px" type="number" min="1000" max="98890"/>
             </div>
         </div>
         <div id="div_id_ville" class="form-group required">
@@ -97,7 +97,7 @@ function form_association() {
         <div id="div_id_actionnaire" class="form-group required">
             <label for="div_id_actionnaire" class="control-label requiredField"> Donateur</label>
             <div class="controls">
-                <input class="input-md textinput textInput form-control" id="div_id_actionnaire" name="donateur" placeholder="Nombre d'actionnaire" style="margin-bottom: 10px" type="number" />
+                <input class="input-md textinput textInput form-control" id="div_id_actionnaire" name="donateur" placeholder="Nombre d'actionnaire" style="margin-bottom: 10px" type="number" value="0" min="0"/>
             </div>
         </div>
         <div class="form-group">

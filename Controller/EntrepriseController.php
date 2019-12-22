@@ -26,11 +26,12 @@ class EntrepriseController extends AdminController
     {
         try{
 
-        $ent = new Entreprise(null, $_POST['nom'], $_POST['rue'], $_POST['postal'], $_POST['ville'], false, $_POST['actionnaire']);
-        $this->manager->insert($ent);
-        header("Location: index.php?action=viewListeEntre");
-        } catch (\Exception $e){
-            error_log($e->getMessage()."\n".$e->getTraceAsString());
+            $ent = new Entreprise(null, $_POST['nom'], $_POST['rue'], $_POST['postal'], $_POST['ville'], false, intval($_POST['actionnaire']));
+            $this->manager->insert($ent);
+            $_SESSION['MSG_OK'] = 'L\'entreprise a été créée !';
+            header("Location: index.php?action=viewListeEntre");
+        } catch(\Exception $ex) {
+            retourMsgErreurCreation($ex);
         }
     }
 

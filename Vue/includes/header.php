@@ -1,12 +1,11 @@
 <?php
     include('connexion.php');
+    include('fonction.php');
     session_start();
 
     if (isset($_POST['secteurs'])){
         $_SESSION['secteurs'] = $_POST['secteurs'];
     }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -28,9 +27,6 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php">Accueil</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="index.php?action=viewListeEntre">Entreprises</a>
                 </li>
                 <li class="nav-item">
@@ -47,3 +43,7 @@
     </nav>
 </header>
 <body>
+
+<?php
+echo afficheMessages();
+?>

@@ -6,3 +6,6 @@ $user = 'aspi'; // User avec les droits
 $pass = 'aspi'; // …
 $pdoErrorMode=\PDO::ERRMODE_EXCEPTION;
 
+
+
+
