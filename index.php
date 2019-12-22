@@ -39,7 +39,7 @@ try {
                     }elseif (isset($_POST['enregistrer_secteur'])){
                         $secteurCtrl->addSecteur();
                     }
-                    require(__DIR__.'/Vue/creationStructure.php');
+                    require(__DIR__ . '/Vue/creation.php');
                     break;
                 case "editSecteur": // edition des Associations
                     $secteur = $secteurCtrl->getManager()->findById(intval($_GET['id']));
