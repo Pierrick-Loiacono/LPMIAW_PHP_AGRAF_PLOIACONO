@@ -21,6 +21,7 @@ try {
             $secteurCtrl = new SecteurController();
             switch ($_GET["action"]) {
                 case "viewListeEntre": // Liste des Entreprises
+                    $secteurs = $secteurCtrl->findAllSecteur();
                     $entrepriseCtrl->viewListe();
                     break;
                 case "viewListeSect": // Liste des Secteurs

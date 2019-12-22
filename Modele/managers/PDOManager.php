@@ -143,7 +143,7 @@ abstract class PDOManager
     // Retourne les secteurs associés  une structure
     public function findStructureSecteur(int $idStructure)
     {
-        $req="SELECT id_secteur FROM secteurs_structures WHERE id_structure = :id";
+        $req="SELECT id_secteur, libelle FROM secteurs_structures ss, secteur s, structure st WHERE st.id = ss.id_structure AND ss.id_secteur = s.id AND id_structure = :id";
         $params = [
             "id"=> $idStructure,
         ];

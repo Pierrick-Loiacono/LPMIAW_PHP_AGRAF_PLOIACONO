@@ -5,6 +5,8 @@
 
     if (isset($_POST['secteurs'])){
         $_SESSION['secteurs'] = $_POST['secteurs'];
+    } else{
+        $_SESSION['secteurs'] = "";
     }
 ?>
 
