@@ -24,9 +24,14 @@ class EntrepriseController extends AdminController
 
     public function addEntreprise(): void
     {
+        try{
+
         $ent = new Entreprise(null, $_POST['nom'], $_POST['rue'], $_POST['postal'], $_POST['ville'], false, $_POST['actionnaire']);
         $this->manager->insert($ent);
         header("Location: index.php?action=viewListeEntre");
+        } catch (\Exception $e){
+            error_log($e->getMessage()."\n".$e->getTraceAsString());
+        }
     }
 
     public function updateEntreprise(Entity $e)

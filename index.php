@@ -30,7 +30,7 @@ try {
                 case "viewListeAsso": // Liste des Associations
                     $associationCtrl->viewListe();
                     break;
-                case "createStructure":
+                case "creationStructure":
                     $secteurs = $secteurCtrl->findAllSecteur();
                     if(isset($_POST['enregistrer_entreprise'])) {
                         $entrepriseCtrl->addEntreprise();
@@ -52,7 +52,7 @@ try {
                         $secteurCtrl->deleteSecteur($secteur);
                         header("Location: index.php?action=viewListeSect");
                     }else {
-                        require(__DIR__.'/Vue/editionSecteur.php');
+                        require(__DIR__ . '/Vue/secteur/editionSecteur.php');
                     }
                     break;
                 case "editEntreprise": //edition des entreprises
@@ -71,7 +71,7 @@ try {
                     }else {
                         $secteurs = $secteurCtrl->findAllSecteur();
                         $entrepriseSecteur = $entrepriseCtrl->getManager()->findStructureSecteur(intval($_GET['id']));
-                        require(__DIR__.'/Vue/editionStructure.php');
+                        require(__DIR__ . '/Vue/structure/editionStructure.php');
                     }
                     break;
                 case "editAsso": //edition des entreprises
@@ -90,7 +90,7 @@ try {
                     } else {
                         $secteurs = $secteurCtrl->findAllSecteur();
                         $associationSecteur = $associationCtrl->getManager()->findStructureSecteur(intval($_GET['id']));
-                        require(__DIR__.'/Vue/editionStructure.php');
+                        require(__DIR__ . '/Vue/structure/editionStructure.php');
                     }
 
                     break;
@@ -103,6 +103,10 @@ try {
         }
 
     } catch (Exception $ex) {
+        $error="Error ".$ex->getCode()." : ".$ex->getMessage()."<br/>".str_replace("\n","<br/>",$ex->getTraceAsString());
+    }
+    if (isset($error)) {
+        require(__DIR__.'/Vue/error/viewError.php');
     }
 
 include('Vue/includes/footer.php');
